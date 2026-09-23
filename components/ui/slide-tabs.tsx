@@ -39,7 +39,7 @@ export const SlideTabs = () => {
       ))}
 
 
-      <button className="ml-4 uppercase rounded-sm bg-white px-4 py-1 text-xs text-black transition-all hover:bg-[#D80F12]/90 md:px-6 md:py-1.5 md:text-sm">
+      <button className="ml-4 cursor-pointer uppercase rounded-sm bg-white/10 backdrop-blur-md border border-white/25 px-4 py-1 text-xs text-white transition-all hover:bg-[#D80F12]/80 hover:text-white md:px-6 md:py-1.5 md:text-sm">
         Contact
       </button>
 
