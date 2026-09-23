@@ -20,7 +20,7 @@ export default function CssImageStacking() {
             <div className="sm:sticky sm:top-0 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
                 <img
-                  src="/hero1.jpeg"
+                  src="/hero1.png"
                   alt=""
                   className="transition-all duration-300 w-[90%] h-full object-contain mx-auto"
                 />
