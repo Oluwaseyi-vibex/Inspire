@@ -9,41 +9,44 @@ export default function CssImageStacking() {
 
         <section className="text-foreground w-full bg-background">
           <>
-            <div className="sm:sticky sm:top-0 w-full">
+            <div className="sm:sticky sm:top-2 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero1.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
+                <img src="/hero1.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
             </div>
             <div className="sm:sticky sm:top-2 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero2.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto " />
+                <img src="/hero2.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto " />
               </figure>
             </div>
             <div className="sm:sticky sm:top-4 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero3.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
+                <img src="/hero3.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
             </div>
-            <div className="sm:sticky sm:top-6 w-full">
+            {/* <div className="sm:sticky sm:top-6 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero4.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
+                <img src="/hero4.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
-            </div>
-            <div className="sm:sticky sm:top-8 w-full">
+            </div> */}
+            {/* <div className="sm:sticky sm:top-8 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero5.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
+                <img src="/hero5.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
-            </div>
-            <div className="sm:sticky sm:top-12 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero6.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
-              </figure>
-            </div>
+            </div> */}
+            {/* 
             <div className="sm:sticky sm:top-16 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero7.png" alt="" className="transition-all duration-300 w-[90%] h-full object-contain mx-auto" />
+                <img src="/hero7.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
+              </figure>
+            </div> */}
+
+            <div className="sm:sticky sm:top-12 w-full">
+              <figure className="w-full h-screen flex items-center justify-center">
+                <img src="/hero6.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
             </div>
+
           </>
         </section>
 
