@@ -455,7 +455,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-white max-w-lg"
+            className="text-white/80 text-base md:text-lg leading-relaxed mb-6 max-w-lg"
           >
             {description}
           </motion.p>
@@ -470,8 +470,8 @@ export default function ContactWithGlobe({
             className="flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-semibold text-white">Get in touch</h3>
-              <p className="text-sm text-white leading-relaxed max-w-xs">
+              <h3 className="text-2xl font-semibold font-display mb-3 text-white">Get in touch</h3>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">
                 Reach out and join us in supporting children in the Niger Delta.
               </p>
             </div>
