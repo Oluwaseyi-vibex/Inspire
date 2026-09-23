@@ -430,7 +430,7 @@ interface ContactWithGlobeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function ContactWithGlobe({
   title = "Contact us",
-  description = "We're looking to improve. Contact us and let us know how we can help.",
+  description = "Empowering children in the Niger Delta through quality education. Reach out and join us in shaping brighter futures.",
   className,
   id,
 }: ContactWithGlobeProps) {
@@ -472,7 +472,7 @@ export default function ContactWithGlobe({
             <div className="flex flex-col gap-1">
               <h3 className="text-xl font-semibold text-white">Get in touch</h3>
               <p className="text-sm text-white leading-relaxed max-w-xs">
-                Reach out via any channel below. We typically reply within one business day.
+                Reach out and join us in supporting children in the Niger Delta.
               </p>
             </div>
 
@@ -516,7 +516,7 @@ export default function ContactWithGlobe({
           >
             <div>
               <h3 className="text-lg font-semibold text-[rgba(175,0,0,1)] mb-0.5">Send a message</h3>
-              <p className="text-sm text-[rgba(175,0,0,0.7)]">Fill out the form and we'll get back to you promptly.</p>
+              <p className="text-sm text-white/70">Fill out the form and we'll get back to you.</p>
             </div>
 
             <FormDots />
