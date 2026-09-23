@@ -11,10 +11,9 @@ export function GradientBackground({ className }: { className?: string }) {
       aria-hidden="true"
       className={className}
       style={{
-        position: "relative",
+        position: "absolute",
+        inset: 0,
         overflow: "hidden",
-        width: "100%",
-        height: "100%",
         containerType: "size",
       }}
     >
