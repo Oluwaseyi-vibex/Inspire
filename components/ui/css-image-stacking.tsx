@@ -56,7 +56,7 @@ export default function CssImageStacking() {
   }, []);
 
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ duration: 0.8 }}>
       <main className="bg-background">
         <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)" }} />
         <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165 40%, #BCC337)", opacity: 0 }} />
