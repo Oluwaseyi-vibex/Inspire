@@ -26,7 +26,7 @@ const IMAGES_3 = [
 export default function GalleryPage() {
   return (
     <div className="relative">
-      <ContainerStagger className="relative z-[9999] -mb-12 place-self-center px-6 pt-24 text-center">
+      <ContainerStagger className="relative z-50 -mb-20 place-self-center px-6 pt-24 text-center">
         <ContainerAnimated>
           <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#D80F12]">
             Our <span className="font-serif font-bold">Gallery</span>
