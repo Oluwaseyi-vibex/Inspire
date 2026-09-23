@@ -10,7 +10,7 @@ export const SlideTabsExample = () => {
   );
 };
 
-const SlideTabs = () => {
+export const SlideTabs = () => {
   const [position, setPosition] = useState({
     left: 0,
     width: 0,
@@ -38,7 +38,7 @@ const SlideTabs = () => {
 };
 
 const Tab = ({ children, setPosition }: { children: string; setPosition: any }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLLIElement>(null);
 
   return (
     <li
@@ -69,3 +69,4 @@ const Cursor = ({ position }: { position: { left: number; width: number; opacity
     />
   );
 };
+export default SlideTabs;
