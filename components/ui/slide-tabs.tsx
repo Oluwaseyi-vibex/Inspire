@@ -27,7 +27,7 @@ export const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto flex w-fit rounded-full border-2 border-white bg-black p-1"
+      className="relative mx-auto flex w-fit rounded-lg border-[0.2px] border-white/50 bg-black p-1"
     >
       <li className="relative z-10 block cursor-pointer">
         <Link href="/">
@@ -58,7 +58,7 @@ const Tab = ({ children, setPosition }: { children: string; setPosition: any }) 
           opacity: 1,
         });
       }}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
+      className="relative z-10 block cursor-pointer px-2 py-1 text-[10px] uppercase text-white mix-blend-difference md:px-4 md:py-2 md:text-xs"
     >
       {children}
     </li>
