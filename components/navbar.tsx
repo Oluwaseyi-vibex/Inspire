@@ -7,20 +7,11 @@ const Navbar = () => {
     const [isDark, setIsDark] = useState(true)
 
     useEffect(() => {
-        const sections = document.querySelectorAll('[data-nav-bg]')
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const bg = (entry.target as HTMLElement).dataset.navBg
-                        setIsDark(bg === 'dark')
-                    }
-                })
-            },
-            { threshold: 0.4 }
-        )
-        sections.forEach((section) => observer.observe(section))
-        return () => observer.disconnect()
+        const handleScroll = () => {
+            setIsDark(window.scrollY <= 50)
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     return (
