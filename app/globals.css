@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
 @keyframes liquid {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 :root {
@@ -26,7 +32,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #3E0F13 70%, #D80F12 30%);
+  background: linear-gradient(to right, #3e0f13, #d80f12 80%);
   color: var(--foreground);
   font-family: var(--font-montserrat);
 }
