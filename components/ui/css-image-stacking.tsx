@@ -61,7 +61,7 @@ export default function CssImageStacking() {
         <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)" }} />
         <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165 40%, #BCC337)", opacity: 0 }} />
         <div ref={hero6DefaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)", opacity: 0 }} />
-        <div ref={hero6ActiveOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #AF0101, #FECB15)", opacity: 0 }} />
+        <div ref={hero6ActiveOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #AF0101 30%, #FECB15)", opacity: 0 }} />
 
         <section className="text-foreground w-full bg-background">
           <>
