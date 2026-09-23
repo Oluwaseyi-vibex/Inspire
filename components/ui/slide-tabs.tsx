@@ -35,7 +35,7 @@ export const SlideTabs = () => {
         </Link>
       </li>
       {["Home", "About", "Gallery", "Support"].map((item) => (
-        <Tab key={item} setPosition={setPosition}>{item}</Tab>
+        <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : `/${item.toLowerCase()}`}>{item}</Tab>
       ))}
 
 
@@ -48,7 +48,7 @@ export const SlideTabs = () => {
   );
 };
 
-const Tab = ({ children, setPosition }: { children: string; setPosition: any }) => {
+const Tab = ({ children, setPosition, href }: { children: string; setPosition: any; href: string }) => {
   const ref = useRef<HTMLLIElement>(null);
 
   return (
@@ -65,7 +65,7 @@ const Tab = ({ children, setPosition }: { children: string; setPosition: any }) 
       }}
       className="relative z-10 block cursor-pointer px-2 py-1 text-[10px] uppercase text-white mix-blend-difference md:px-4 md:py-2 md:text-xs"
     >
-      {children}
+      <Link href={href}>{children}</Link>
     </li>
   );
 };
