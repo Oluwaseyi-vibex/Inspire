@@ -9,8 +9,9 @@ export default function CssImageStacking() {
         <div className="wrapper">
           <section className="text-foreground h-screen w-full grid place-content-center sticky top-0 relative overflow-hidden">
             <GradientBackground className="absolute inset-0" />
+            <div className="absolute inset-0 bg-black/60"></div>
 
-            <div className="flex flex-col items-center gap-6 text-center">
+            <div className="flex flex-col items-center gap-6 text-center relative z-10">
               <p className="text-white/80 text-sm font-medium uppercase tracking-widest">Give Hope To Every Child</p>
               <h1 className="2xl:text-7xl text-5xl font-bold leading-tight font-display">Inspire Nigeria Child</h1>
               <p className="text-white/70 text-sm md:text-base max-w-xl leading-relaxed">We Seek Out World Changers And Difference Makers Around The Nigeria, And Inspire Them To Fulfil Their Unique Purpose.</p>
