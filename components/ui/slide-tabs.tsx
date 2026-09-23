@@ -34,8 +34,8 @@ export const SlideTabs = () => {
           <Image src="/logo.svg" alt="Inspire" width={80} height={80} className="rounded-xl" />
         </Link>
       </li>
-      {["Home", "About", "Gallery", "Support"].map((item) => (
-        <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : `/${item.toLowerCase()}`}>{item}</Tab>
+      {["Home", "About", "Gallery", "Contact"].map((item) => (
+        <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : `#${item.toLowerCase()}`}>{item}</Tab>
       ))}
 
 
