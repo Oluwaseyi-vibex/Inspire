@@ -7,17 +7,17 @@ export default function CssImageStacking() {
     <ReactLenis root>
       <main className="bg-background">
         <div className="wrapper">
-          <section className="text-foreground h-screen w-full grid place-content-center sticky top-0 relative overflow-hidden">
+          <section className="text-foreground h-[70vh] w-full grid place-content-center sticky top-0 relative overflow-hidden">
             <GradientBackground className="absolute inset-0" />
             <div className="absolute inset-0 bg-black/60"></div>
 
-            <div className="flex flex-col items-center gap-6 text-center relative z-10">
-              <p className="text-white/80 text-sm font-medium uppercase tracking-widest">Give Hope To Every Child</p>
-              <h1 className="2xl:text-7xl text-5xl font-bold leading-tight font-display">Inspire Nigeria Child</h1>
-              <p className="text-white/70 text-sm md:text-base max-w-xl leading-relaxed">We Seek Out World Changers And Difference Makers Around The Nigeria, And Inspire Them To Fulfil Their Unique Purpose.</p>
-              <div className="mt-4 flex flex-col sm:flex-row items-center gap-4">
-                <button className="px-8 py-3.5 cursor-pointer bg-white text-red-900 font-semibold rounded-lg hover:bg-red-50 transition-colors active:scale-95 text-sm">Support</button>
-                <button className="px-8 py-3.5 cursor-pointer bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-colors active:scale-95 text-sm">Learn More</button>
+            <div className="flex flex-col items-center gap-4 text-center relative z-10">
+              <p className="text-white/80 text-xs font-medium uppercase tracking-widest">Give Hope To Every Child</p>
+              <h1 className="2xl:text-6xl text-4xl font-bold leading-tight font-display">Inspire Nigeria Child</h1>
+              <p className="text-white/70 text-xs md:text-sm max-w-xl leading-relaxed">We Seek Out World Changers And Difference Makers Around Nigeria, And Inspire Them To Fulfil Their Unique Purpose.</p>
+              <div className="mt-2 flex flex-col sm:flex-row items-center gap-4">
+                <button className="px-8 py-3 cursor-pointer bg-white text-red-900 font-semibold rounded-lg hover:bg-red-50 transition-colors active:scale-95 text-sm">Support</button>
+                <button className="px-8 py-3 cursor-pointer bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-colors active:scale-95 text-sm">Learn More</button>
               </div>
             </div>
           </section>
@@ -39,7 +39,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero2.png"
                   alt=""
-                  className="transition-all duration-300 w-[90%] h-full object-contain mx-auto [box-shadow:0_-5px_16px_4px_rgba(0,0,0,0.8),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+                  className="transition-all duration-300 w-[90%] h-full object-contain mx-auto "
                 />
               </figure>
             </div>
