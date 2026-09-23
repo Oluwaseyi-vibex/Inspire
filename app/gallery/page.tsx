@@ -28,20 +28,20 @@ export default function GalleryPage() {
     <div className="relative">
       <ContainerStagger className="relative z-[9999] -mb-12 place-self-center px-6 pt-12 text-center">
         <ContainerAnimated>
-          <h1 className="font-serif text-4xl font-extralight  md:text-5xl">
+          <h1 className="font-serif text-4xl font-extralight  md:text-5xl text-[#D80F12]">
             Our <span className="font-serif font-extralight">Gallery</span>
           </h1>
         </ContainerAnimated>
         <ContainerAnimated>
-          <p className="leading-normal tracking-tight text-white/70">
+          <p className="leading-normal tracking-tight text-[#D80F12]/80">
             Explore moments from our journey
           </p>
         </ContainerAnimated>
         <ContainerAnimated className="my-4">
-          <Button className="gap-1 bg-white/10 text-white backdrop-blur-sm">
+          <Button className="gap-1 bg-[#D80F12] text-white">
             Book free call <VideoIcon className="size-4" />
           </Button>
-          <Button variant={"link"} className="text-white">
+          <Button variant={"link"} className="text-[#D80F12]">
             About Us
           </Button>
         </ContainerAnimated>
