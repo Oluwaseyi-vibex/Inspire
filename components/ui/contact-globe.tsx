@@ -438,22 +438,14 @@ export default function ContactWithGlobe({
     <section id={id} className={cn("relative w-full overflow-hidden py-20", className)}>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col items-center text-center gap-4 mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: smoothEase }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-[rgba(175,0,0,0.1)] border border-[rgba(175,0,0,0.3)]"
-          >
-            <span className="text-sm text-white font-medium">Contact</span>
-          </motion.div>
+
 
           <motion.h2
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.15, ease: smoothEase }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold font-display mb-6 text-center"
           >
             {title}
           </motion.h2>
@@ -463,7 +455,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-white max-w-md"
+            className="text-base text-white max-w-lg"
           >
             {description}
           </motion.p>
@@ -511,7 +503,7 @@ export default function ContactWithGlobe({
                 strokeColor="rgba(255,255,255,0.5)"
                 sphereOutlineColor="rgba(255,255,255,0.3)"
               />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent" />
+              {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(175,0,0,0.4)] to-transparent" /> */}
             </div>
           </motion.div>
 
