@@ -141,47 +141,6 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-        <section className="text-foreground w-full bg-background py-24 px-6 md:px-12">
-          <div className="max-w-5xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold font-display mb-12 text-center"
-            >
-              What People Say
-            </motion.h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { name: "Cameron Williamson", role: "Founder", text: "Sea chub demoiselle whalefish zebra lionfish mud cat pelican eel. Minnow snoek icefish velvet-belly shark, California halibut round stingray northern sea robin." },
-                { name: "Maya Tomayaka", role: "Founder", text: "Sea chub demoiselle whalefish zebra lionfish mud cat pelican eel. Minnow snoek icefish velvet-belly shark, California halibut round stingray northern sea robin." },
-                { name: "Izu Timothy", role: "Founder", text: "Sea chub demoiselle whalefish zebra lionfish mud cat pelican eel. Minnow snoek icefish velvet-belly shark, California halibut round stingray northern sea robin." },
-              ].map((testimonial, i) => (
-                <motion.div
-                  key={testimonial.name}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.8, delay: 0.2 * i }}
-                  className="bg-white/5 rounded-xl p-6"
-                >
-                  <div className="flex gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white font-semibold text-sm">{testimonial.name[0]}</span>
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold text-sm">{testimonial.name}</p>
-                      <p className="text-white/50 text-xs">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-white/60 text-sm leading-relaxed">{testimonial.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <footer className="group bg-background">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-linear-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
             INSPIRE
