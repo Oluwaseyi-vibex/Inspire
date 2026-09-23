@@ -422,21 +422,33 @@ const FormDots = React.forwardRef<
 });
 FormDots.displayName = "FormDots";
 
-interface ContactWithGlobeProps {
+interface ContactWithGlobeProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
+  subtitle?: string;
   description?: string;
   className?: string;
 }
 
 export default function ContactWithGlobe({
   title = "Contact us",
+  subtitle = "Contact",
   description = "We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.",
   className,
+  id,
 }: ContactWithGlobeProps) {
   return (
-    <section className={cn("relative w-full overflow-hidden py-20", className)}>
+    <section id={id} className={cn("relative w-full overflow-hidden py-20", className)}>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col items-center text-center gap-4 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: smoothEase }}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-[rgba(175,0,0,0.1)] border border-[rgba(175,0,0,0.3)]"
+          >
+            <span className="text-sm text-[rgba(175,0,0,1)] font-medium">{subtitle}</span>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 14 }}

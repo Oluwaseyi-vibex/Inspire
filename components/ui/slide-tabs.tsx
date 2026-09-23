@@ -34,12 +34,12 @@ export const SlideTabs = () => {
           <Image src="/logo.svg" alt="Inspire" width={80} height={80} className="rounded-xl" />
         </Link>
       </li>
-      {["Home", "About", "Gallery", "Support"].map((item) => (
+      {["Home", "About", "Gallery", "Contact"].map((item) => (
         <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : `/${item.toLowerCase()}`}>{item}</Tab>
       ))}
 
 
-      <Link href="/contact" className="ml-4 cursor-pointer uppercase rounded-sm bg-white/90 backdrop-blur-md border border-white/50 px-4 py-1 text-xs text-black transition-all hover:bg-[#D80F12]/80 hover:text-white md:px-6 md:py-1.5 md:text-sm">
+      <Link href="#contact" className="ml-4 cursor-pointer uppercase rounded-sm bg-white/90 backdrop-blur-md border border-white/50 px-4 py-1 text-xs text-black transition-all hover:bg-[#D80F12]/80 hover:text-white md:px-6 md:py-1.5 md:text-sm">
         Contact
       </Link>
 

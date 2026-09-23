@@ -184,12 +184,12 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-        <footer className="group bg-background" data-nav-bg="light">
+        {/* <footer className="group bg-background" data-nav-bg="light">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-linear-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
             INSPIRE
           </h1>
           <div className="bg-background h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full"></div>
-        </footer>
+        </footer> */}
       </main>
     </ReactLenis>
   );
