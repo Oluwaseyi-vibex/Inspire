@@ -508,8 +508,8 @@ export default function ContactWithGlobe({
                 variant="wireframesolid"
                 autoRotate autoRotateSpeed={0.45}
                 strokeWidth={0.6} graticuleOpacity={0.12}
-                strokeColor="rgba(175,0,0,0.5)"
-                sphereOutlineColor="rgba(175,0,0,0.3)"
+                strokeColor="rgba(255,255,255,0.5)"
+                sphereOutlineColor="rgba(255,255,255,0.3)"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent" />
             </div>
