@@ -32,7 +32,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #3e0f13, #d80f12 80%);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-montserrat);
   margin: 0;
@@ -42,12 +42,6 @@ body {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to right, #126165, #BCC337);
-  opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
-}
-
-.gradient-overlay.active {
-  opacity: 1;
 }

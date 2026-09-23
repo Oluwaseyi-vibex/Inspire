@@ -5,19 +5,23 @@ import { useEffect, useRef } from "react";
 
 export default function CssImageStacking() {
   const hero3Ref = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const defaultOverlayRef = useRef<HTMLDivElement>(null);
+  const activeOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = hero3Ref.current;
-    const overlay = overlayRef.current;
-    if (!element || !overlay) return;
+    const defaultOverlay = defaultOverlayRef.current;
+    const activeOverlay = activeOverlayRef.current;
+    if (!element || !defaultOverlay || !activeOverlay) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          overlay.classList.add("active");
+          if (defaultOverlay) defaultOverlay.style.opacity = "0";
+          if (activeOverlay) activeOverlay.style.opacity = "1";
         } else {
-          overlay.classList.remove("active");
+          if (defaultOverlay) defaultOverlay.style.opacity = "1";
+          if (activeOverlay) activeOverlay.style.opacity = "0";
         }
       },
       { threshold: 0.3 }
@@ -30,7 +34,8 @@ export default function CssImageStacking() {
   return (
     <ReactLenis root>
       <main className="bg-background">
-        <div ref={overlayRef} className="gradient-overlay" />
+        <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13, #d80f12 80%)" }} />
+        <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165, #BCC337)", opacity: 0 }} />
 
         <section className="text-foreground w-full bg-background">
           <>
