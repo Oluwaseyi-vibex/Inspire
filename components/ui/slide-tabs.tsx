@@ -27,16 +27,21 @@ export const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto flex w-fit rounded-lg border-[0.2px] border-white/50 bg-black p-1"
+      className="relative mx-auto flex w-fit normal-case items-center justify-center rounded-lg border-[0.1px] border-white/25 bg-black/30 backdrop-blur-md p-3 px-6"
     >
-      <li className="relative z-10 block cursor-pointer">
+      <li className="relative z-10 block cursor-pointer mr-12">
         <Link href="/">
           <Image src="/logo.svg" alt="Inspire" width={80} height={80} className="rounded-xl" />
         </Link>
       </li>
-      {["Home", "About", "Gallery", "Support", "Contact"].map((item) => (
+      {["Home", "About", "Gallery", "Support"].map((item) => (
         <Tab key={item} setPosition={setPosition}>{item}</Tab>
       ))}
+
+
+      <button className="ml-4 uppercase rounded-sm bg-white px-4 py-1 text-xs text-black transition-all hover:bg-[#D80F12]/90 md:px-6 md:py-1.5 md:text-sm">
+        Contact
+      </button>
 
       <Cursor position={position} />
     </ul>
