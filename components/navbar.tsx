@@ -1,21 +1,14 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
-    const [isDark, setIsDark] = useState(true)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsDark(window.scrollY <= 50)
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+    const pathname = usePathname()
+    const isGallery = pathname === '/gallery'
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-around px-6 md:px-12 py-2 transition-all duration-500 ${isDark ? 'bg-transparent' : 'bg-black/70 backdrop-blur-md'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-around px-6 md:px-12 py-2 transition-all duration-500 ${isGallery ? 'bg-black/70 backdrop-blur-md' : 'bg-transparent'}`}>
             <Link href="/" className="flex items-center gap-3">
                 <Image src={'/logo.svg'} alt='logo' width={1000} height={1000} className="rounded-xl w-[100%]" />
             </Link>
