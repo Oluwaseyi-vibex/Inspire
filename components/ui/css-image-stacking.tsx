@@ -9,9 +9,15 @@ export default function CssImageStacking() {
           <section className="text-foreground h-screen w-full bg-background grid place-content-center sticky top-0">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
-            <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-              CSS Sticky Properties for <br /> Stacking Cards. Scroll down! 👇
-            </h1>
+            <div className="flex flex-col items-center gap-6 text-center">
+              <p className="text-white/80 text-sm font-medium uppercase tracking-widest">Give Hope To Every Child</p>
+              <h1 className="2xl:text-7xl text-5xl font-bold leading-tight font-display">Inspire Nigeria Child</h1>
+              <p className="text-white/70 text-sm md:text-base max-w-xl leading-relaxed">We Seek Out World Changers And Difference Makers Around The Nigeria, And Inspire Them To Fulfil Their Unique Purpose.</p>
+              <div className="mt-4 flex flex-col sm:flex-row items-center gap-4">
+                <button className="px-8 py-3.5 cursor-pointer bg-white text-red-900 font-semibold rounded-lg hover:bg-red-50 transition-colors active:scale-95 text-sm">Support</button>
+                <button className="px-8 py-3.5 cursor-pointer bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-colors active:scale-95 text-sm">Learn More</button>
+              </div>
+            </div>
           </section>
         </div>
 
