@@ -2,6 +2,8 @@
 import { ReactLenis } from "lenis/react";
 import { GradientBackground } from "./jade-sky";
 
+import { LiquidButton } from "./liquid-glass-button";
+
 export default function CssImageStacking() {
   return (
     <ReactLenis root>
@@ -16,8 +18,8 @@ export default function CssImageStacking() {
               <h1 className="2xl:text-6xl text-4xl font-bold leading-tight font-display">Inspire Nigeria Child</h1>
               <p className="text-white/70 text-xs md:text-sm max-w-xl leading-relaxed">We Seek Out World Changers And Difference Makers Around Nigeria, And Inspire Them To Fulfil Their Unique Purpose.</p>
               <div className="mt-2 flex flex-col sm:flex-row items-center gap-4">
-                <button className="px-8 py-3 cursor-pointer bg-white text-red-900 font-semibold rounded-lg hover:bg-red-50 transition-colors active:scale-95 text-sm">Support</button>
-                <button className="px-8 py-3 cursor-pointer bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-colors active:scale-95 text-sm">Learn More</button>
+                <LiquidButton className="bg-white text-red-900">Support</LiquidButton>
+                <LiquidButton className="bg-white/10 text-white">Learn More</LiquidButton>
               </div>
             </div>
           </section>
