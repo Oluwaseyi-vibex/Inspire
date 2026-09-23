@@ -424,14 +424,12 @@ FormDots.displayName = "FormDots";
 
 interface ContactWithGlobeProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
-  subtitle?: string;
   description?: string;
   className?: string;
 }
 
 export default function ContactWithGlobe({
   title = "Contact us",
-  subtitle = "Contact",
   description = "We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.",
   className,
   id,
@@ -447,7 +445,7 @@ export default function ContactWithGlobe({
             transition={{ duration: 0.8, ease: smoothEase }}
             className="inline-flex items-center px-4 py-1.5 rounded-full bg-[rgba(175,0,0,0.1)] border border-[rgba(175,0,0,0.3)]"
           >
-            <span className="text-sm text-[rgba(175,0,0,1)] font-medium">{subtitle}</span>
+            <span className="text-sm text-[rgba(175,0,0,1)] font-medium">Contact</span>
           </motion.div>
 
           <motion.h2
