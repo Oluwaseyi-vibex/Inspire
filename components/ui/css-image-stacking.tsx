@@ -8,7 +8,7 @@ export default function CssImageStacking() {
   return (
     <ReactLenis root>
       <main className="bg-background">
-        <div className="wrapper">
+        {/* <div className="wrapper">
           <section className="text-foreground h-[70vh] w-full grid place-content-center sticky top-0 relative overflow-hidden">
             <GradientBackground className="absolute inset-0" />
             <div className="absolute inset-0 bg-black/60"></div>
@@ -23,7 +23,7 @@ export default function CssImageStacking() {
               </div>
             </div>
           </section>
-        </div>
+        </div> */}
 
         <section className="text-foreground w-full bg-background">
           <>

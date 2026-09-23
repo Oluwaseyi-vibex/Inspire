@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { LiquidButton } from './ui/liquid-glass-button'
 
 const Navbar = () => {
     return (
@@ -12,9 +13,7 @@ const Navbar = () => {
                 <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
                 <li><Link href="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
             </ul>
-            <button className="px-5 py-2.5 bg-white text-red-900 text-sm font-semibold rounded-lg hover:bg-red-50 transition-colors active:scale-95">
-                Contact
-            </button>
+            <LiquidButton className="bg-white text-red-900">Contact</LiquidButton>
         </nav>
     )
 }
