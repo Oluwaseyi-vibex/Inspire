@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export function LiquidGlassButton({
+export function LiquidButton({
   children,
   className,
   ...props
@@ -31,7 +31,7 @@ export function LiquidGlassButton({
       onMouseLeave={() => { setHovered(false); setPressed(false); }}
       onMouseDown={() => setPressed(true)}
       onMouseUp={() => setPressed(false)}
-      {...props}
+      {...(props as any)}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 bg-[length:200%_200%] animate-[liquid_3s_ease-in-out_infinite]" />
       <span className="relative z-10">{children}</span>
