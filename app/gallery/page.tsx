@@ -26,25 +26,18 @@ const IMAGES_3 = [
 export default function GalleryPage() {
   return (
     <div className="relative">
-      <ContainerStagger className="-mb-20 place-self-center px-6 pt-24 text-center">
+      <ContainerStagger className="-mb-20 place-self-center px-6 pt-34 text-center">
         <ContainerAnimated>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#D80F12]">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold text-[rgba(175,0,0,1)]">
             Our <span className="font-serif font-bold">Gallery</span>
           </h1>
         </ContainerAnimated>
         <ContainerAnimated>
-          <p className="leading-normal tracking-tight text-[#D80F12]/80 mt-4">
+          <p className="leading-normal tracking-tight text-[rgba(175,0,0,1)]/80 mt-4">
             Explore moments from our journey
           </p>
         </ContainerAnimated>
-        <ContainerAnimated className="my-4">
-          <Button className="gap-1 bg-[#D80F12] text-white">
-            Book free call <VideoIcon className="size-4" />
-          </Button>
-          <Button variant={"link"} className="text-[#D80F12]">
-            About Us
-          </Button>
-        </ContainerAnimated>
+
       </ContainerStagger>
 
       <ContainerScroll className="relative h-[350vh]">
