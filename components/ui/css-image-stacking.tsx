@@ -7,7 +7,7 @@ export default function CssImageStacking() {
     <ReactLenis root>
       <main className="bg-background">
         <div className="wrapper">
-          <section className="text-foreground h-screen w-full bg-background grid place-content-center sticky top-0">
+          <section className="text-foreground h-screen w-full grid place-content-center sticky top-0 relative overflow-hidden">
             <GradientBackground className="absolute inset-0" />
 
             <div className="flex flex-col items-center gap-6 text-center">
