@@ -1,5 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 export const SlideTabsExample = () => {
@@ -17,8 +19,6 @@ export const SlideTabs = () => {
     opacity: 0,
   });
 
-  const items = ["Inspire", "Home", "About", "Gallery", "Support", "Contact"];
-
   return (
     <ul
       onMouseLeave={() => {
@@ -29,7 +29,12 @@ export const SlideTabs = () => {
       }}
       className="relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1"
     >
-      {items.map((item) => (
+      <li className="relative z-10 block cursor-pointer">
+        <Link href="/">
+          <Image src="/logo.svg" alt="Inspire" width={80} height={80} className="rounded-xl" />
+        </Link>
+      </li>
+      {["Home", "About", "Gallery", "Support", "Contact"].map((item) => (
         <Tab key={item} setPosition={setPosition}>{item}</Tab>
       ))}
 
