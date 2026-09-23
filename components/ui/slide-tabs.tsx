@@ -27,7 +27,7 @@ export const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1"
+      className="relative mx-auto flex w-fit rounded-full border-2 border-white bg-black p-1"
     >
       <li className="relative z-10 block cursor-pointer">
         <Link href="/">
@@ -71,7 +71,7 @@ const Cursor = ({ position }: { position: { left: number; width: number; opacity
       animate={{
         ...position,
       }}
-      className="absolute z-0 h-7 rounded-full bg-black md:h-12"
+      className="absolute z-0 h-7 rounded-full bg-white md:h-12"
     />
   );
 };
