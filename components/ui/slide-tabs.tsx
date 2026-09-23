@@ -35,7 +35,7 @@ export const SlideTabs = () => {
         </Link>
       </li>
       {["Home", "About", "Gallery", "Contact"].map((item) => (
-        <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : `#${item.toLowerCase()}`}>{item}</Tab>
+        <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : item === "Gallery" ? "/gallery" : `#${item.toLowerCase()}`}>{item}</Tab>
       ))}
 
 
