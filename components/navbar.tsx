@@ -4,18 +4,27 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false)
+    const [isDark, setIsDark] = useState(true)
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
+        const sections = document.querySelectorAll('[data-nav-bg]')
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const bg = (entry.target as HTMLElement).dataset.navBg
+                        setIsDark(bg === 'dark')
+                    }
+                })
+            },
+            { threshold: 0.4 }
+        )
+        sections.forEach((section) => observer.observe(section))
+        return () => observer.disconnect()
     }, [])
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-around px-6 md:px-12 py-2 transition-all duration-500 ${scrolled ? 'bg-black/70 backdrop-blur-md' : 'bg-transparent'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-around px-6 md:px-12 py-2 transition-all duration-500 ${isDark ? 'bg-transparent' : 'bg-black/70 backdrop-blur-md'}`}>
             <Link href="/" className="flex items-center gap-3">
                 <Image src={'/logo.svg'} alt='logo' width={1000} height={1000} className="rounded-xl w-[100%]" />
             </Link>
