@@ -1,8 +1,30 @@
 "use client";
 import { ReactLenis } from "lenis/react";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export default function CssImageStacking() {
+  const hero3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = hero3Ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          document.body.style.background = "linear-gradient(to right, #126165, #BCC337)";
+        } else {
+          document.body.style.background = "linear-gradient(to right, #3e0f13, #d80f12 80%)";
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <ReactLenis root>
       <main className="bg-background">
@@ -19,7 +41,7 @@ export default function CssImageStacking() {
                 <img src="/hero2.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto " />
               </figure>
             </div>
-            <div className="sm:sticky sm:top-4 w-full">
+            <div className="sm:sticky sm:top-4 w-full" ref={hero3Ref}>
               <figure className="w-full h-screen flex items-center justify-center">
                 <img src="/hero3.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
