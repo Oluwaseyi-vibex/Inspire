@@ -35,6 +35,7 @@ body {
   background: linear-gradient(to right, #3e0f13, #d80f12 80%);
   color: var(--foreground);
   font-family: var(--font-montserrat);
+  margin: 0;
 }
 
 .gradient-overlay {
