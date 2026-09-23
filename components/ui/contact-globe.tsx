@@ -444,7 +444,7 @@ export default function ContactWithGlobe({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold font-display mb-6 text-center"
           >
             {title}
@@ -454,7 +454,7 @@ export default function ContactWithGlobe({
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
+            transition={{ duration: 0.6, delay: 0.1, ease: smoothEase }}
             className="text-white/80 text-base md:text-lg leading-relaxed mb-6 max-w-lg"
           >
             {description}
@@ -466,7 +466,7 @@ export default function ContactWithGlobe({
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.0, delay: 0.2, ease: smoothEase }}
+            transition={{ duration: 0.6, delay: 0.1, ease: smoothEase }}
             className="flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
@@ -511,7 +511,7 @@ export default function ContactWithGlobe({
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.0, delay: 0.35, ease: smoothEase }}
+            transition={{ duration: 0.6, delay: 0.2, ease: smoothEase }}
             className="rounded-2xl border border-[rgba(175,0,0,0.2)] bg-white dark:bg-zinc-900 p-6 sm:p-8 flex flex-col gap-5"
           >
             <div>
