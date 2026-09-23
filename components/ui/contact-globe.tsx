@@ -430,7 +430,7 @@ interface ContactWithGlobeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function ContactWithGlobe({
   title = "Contact us",
-  description = "We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.",
+  description = "We're always looking to improve. Contact us and let us know how we can help.",
   className,
   id,
 }: ContactWithGlobeProps) {
