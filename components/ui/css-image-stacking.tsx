@@ -1,5 +1,6 @@
 "use client";
 import { ReactLenis } from "lenis/react";
+import { GradientBackground } from "./jade-sky";
 
 export default function CssImageStacking() {
   return (
@@ -7,7 +8,7 @@ export default function CssImageStacking() {
       <main className="bg-background">
         <div className="wrapper">
           <section className="text-foreground h-screen w-full bg-background grid place-content-center sticky top-0">
-            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            <GradientBackground className="absolute inset-0" />
 
             <div className="flex flex-col items-center gap-6 text-center">
               <p className="text-white/80 text-sm font-medium uppercase tracking-widest">Give Hope To Every Child</p>
@@ -91,7 +92,7 @@ export default function CssImageStacking() {
 
         <footer className="group bg-background">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-linear-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
-            ui-layout
+            INSPIRE
           </h1>
           <div className="bg-background h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full"></div>
         </footer>
