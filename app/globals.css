@@ -45,3 +45,13 @@ body {
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
+
+.gradient-overlay.default {
+  background: linear-gradient(to right, #3e0f13 35%, #d80f12);
+  opacity: 1;
+}
+
+.gradient-overlay.active {
+  background: linear-gradient(to right, #126165 37%, #bcc337);
+  opacity: 1;
+}

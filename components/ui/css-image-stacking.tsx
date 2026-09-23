@@ -5,37 +5,63 @@ import { useEffect, useRef } from "react";
 
 export default function CssImageStacking() {
   const hero3Ref = useRef<HTMLDivElement>(null);
+  const hero6Ref = useRef<HTMLDivElement>(null);
   const defaultOverlayRef = useRef<HTMLDivElement>(null);
   const activeOverlayRef = useRef<HTMLDivElement>(null);
+  const hero6DefaultOverlayRef = useRef<HTMLDivElement>(null);
+  const hero6ActiveOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = hero3Ref.current;
+    const hero3 = hero3Ref.current;
+    const hero6 = hero6Ref.current;
     const defaultOverlay = defaultOverlayRef.current;
     const activeOverlay = activeOverlayRef.current;
-    if (!element || !defaultOverlay || !activeOverlay) return;
+    const hero6Default = hero6DefaultOverlayRef.current;
+    const hero6Active = hero6ActiveOverlayRef.current;
+    if (!hero3 || !hero6 || !defaultOverlay || !activeOverlay || !hero6Default || !hero6Active) return;
 
-    const observer = new IntersectionObserver(
+    const observer3 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (defaultOverlay) defaultOverlay.style.opacity = "0";
-          if (activeOverlay) activeOverlay.style.opacity = "1";
+          defaultOverlay.style.opacity = "0";
+          activeOverlay.style.opacity = "1";
+          hero6Default.style.opacity = "0";
+          hero6Active.style.opacity = "0";
         } else {
-          if (defaultOverlay) defaultOverlay.style.opacity = "1";
-          if (activeOverlay) activeOverlay.style.opacity = "0";
+          defaultOverlay.style.opacity = "1";
+          activeOverlay.style.opacity = "0";
         }
       },
       { threshold: 0.3 }
     );
 
-    observer.observe(element);
-    return () => observer.disconnect();
+    const observer6 = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          defaultOverlay.style.opacity = "0";
+          activeOverlay.style.opacity = "0";
+          hero6Default.style.opacity = "0";
+          hero6Active.style.opacity = "1";
+        } else {
+          hero6Default.style.opacity = "1";
+          hero6Active.style.opacity = "0";
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer3.observe(hero3);
+    observer6.observe(hero6);
+    return () => { observer3.disconnect(); observer6.disconnect(); };
   }, []);
 
   return (
     <ReactLenis root>
       <main className="bg-background">
-        <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13, #d80f12 80%)" }} />
-        <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165, #BCC337)", opacity: 0 }} />
+        <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)" }} />
+        <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165 40%, #BCC337)", opacity: 0 }} />
+        <div ref={hero6DefaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)", opacity: 0 }} />
+        <div ref={hero6ActiveOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #AF0101, #FECB15)", opacity: 0 }} />
 
         <section className="text-foreground w-full bg-background">
           <>
@@ -49,29 +75,13 @@ export default function CssImageStacking() {
                 <img src="/hero2.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto " />
               </figure>
             </div>
-            <div className="sm:sticky sm:top-4 w-full" ref={hero3Ref}>
+            <div className="sm:sticky sm:top-2 w-full" ref={hero3Ref}>
               <figure className="w-full h-screen flex items-center justify-center">
                 <img src="/hero3.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
             </div>
-            {/* <div className="sm:sticky sm:top-6 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero4.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div> */}
-            {/* <div className="sm:sticky sm:top-8 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero5.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div> */}
-            {/* 
-            <div className="sm:sticky sm:top-16 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero7.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div> */}
 
-            <div className="sm:sticky sm:top-12 w-full">
+            <div className="sm:sticky sm:top-12 w-full" ref={hero6Ref}>
               <figure className="w-full h-screen flex items-center justify-center">
                 <img src="/hero6.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
               </figure>
