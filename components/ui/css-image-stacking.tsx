@@ -22,7 +22,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero1.jpeg"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[55%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
@@ -31,7 +31,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero2.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[60%] align-bottom object-cover rounded-md [box-shadow:0_-5px_16px_4px_rgba(0,0,0,0.8),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+                  className="transition-all duration-300 w-full h-full object-contain [box-shadow:0_-5px_16px_4px_rgba(0,0,0,0.8),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
                 />
               </figure>
             </div>
@@ -40,7 +40,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero3.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[65%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
@@ -49,7 +49,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero4.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[70%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
@@ -58,7 +58,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero5.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[75%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
@@ -67,7 +67,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero6.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[80%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
@@ -76,7 +76,7 @@ export default function CssImageStacking() {
                 <img
                   src="/hero7.png"
                   alt=""
-                  className="transition-all duration-300 h-[80%] w-[85%] align-bottom object-cover rounded-md"
+                  className="transition-all duration-300 w-full h-full object-contain"
                 />
               </figure>
             </div>
