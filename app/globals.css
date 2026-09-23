@@ -26,7 +26,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #3E0F13, #D80F12);
+  background: linear-gradient(to right, #3E0F13 70%, #D80F12 30%);
   color: var(--foreground);
   font-family: var(--font-montserrat);
 }
