@@ -90,7 +90,7 @@ export default function CssImageStacking() {
           </>
         </section>
 
-        <section className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
+        <section className="text-foreground w-full bg-white py-24 px-6 md:px-12" data-nav-bg="light">
           <div className="max-w-5xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -150,7 +150,7 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-        <section className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
+        <section className="text-foreground w-full bg-white py-24 px-6 md:px-12" data-nav-bg="light">
           <div className="max-w-6xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -184,7 +184,7 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-        <footer className="group bg-background" data-nav-bg="light">
+        <footer className="group bg-white" data-nav-bg="light">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-linear-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
             INSPIRE
           </h1>
