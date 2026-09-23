@@ -445,7 +445,7 @@ export default function ContactWithGlobe({
             transition={{ duration: 0.8, ease: smoothEase }}
             className="inline-flex items-center px-4 py-1.5 rounded-full bg-[rgba(175,0,0,0.1)] border border-[rgba(175,0,0,0.3)]"
           >
-            <span className="text-sm text-[rgba(175,0,0,1)] font-medium">Contact</span>
+            <span className="text-sm text-white font-medium">Contact</span>
           </motion.div>
 
           <motion.h2
@@ -453,7 +453,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.15, ease: smoothEase }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[rgba(175,0,0,1)]"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
           >
             {title}
           </motion.h2>
@@ -463,7 +463,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-[rgba(175,0,0,0.7)] max-w-md"
+            className="text-base text-white max-w-md"
           >
             {description}
           </motion.p>
@@ -478,8 +478,8 @@ export default function ContactWithGlobe({
             className="flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-semibold text-[rgba(175,0,0,1)]">Get in touch</h3>
-              <p className="text-sm text-[rgba(175,0,0,0.7)] leading-relaxed max-w-xs">
+              <h3 className="text-xl font-semibold text-white">Get in touch</h3>
+              <p className="text-sm text-white leading-relaxed max-w-xs">
                 Reach out via any channel below. We typically reply within one business day.
               </p>
             </div>
@@ -492,10 +492,10 @@ export default function ContactWithGlobe({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease: smoothEase }}
-                  className="group flex items-center gap-3 w-fit text-sm text-[rgba(175,0,0,0.7)] hover:text-[rgba(175,0,0,1)] transition-colors duration-200"
+                  className="group flex items-center gap-3 w-fit text-sm text-white hover:text-white transition-colors duration-200"
                 >
                   <div className="w-8 h-8 rounded-lg bg-[rgba(175,0,0,0.1)] border border-[rgba(175,0,0,0.2)] group-hover:border-[rgba(175,0,0,0.4)] group-hover:bg-[rgba(175,0,0,0.15)] flex items-center justify-center shrink-0 transition-all duration-200">
-                    <Icon className="w-3.5 h-3.5 text-[rgba(175,0,0,0.6)] group-hover:text-[rgba(175,0,0,1)] transition-colors duration-200" />
+                    <Icon className="w-3.5 h-3.5 text-white group-hover:text-white transition-colors duration-200" />
                   </div>
                   {label}
                 </motion.a>
