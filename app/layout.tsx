@@ -1,6 +1,7 @@
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar";
+import { CinematicFooter } from "@/components/ui/cinematic-footer";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col space-y-4">
         <Navbar />
         {children}
+        <CinematicFooter />
       </body>
     </html>
   );

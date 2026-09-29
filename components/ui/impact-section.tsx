@@ -104,12 +104,24 @@ export function ImpactSection() {
             </Card>
           }
           mainFeature={
-            <Card className="border-neutral-900 bg-neutral-900 text-white shadow-lg">
+            <Card className="relative overflow-hidden border-neutral-900 bg-neutral-900 text-white shadow-lg">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/inspire/gallery/2024/6.png"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-neutral-950/75"
+              />
+              <div className="relative z-10 flex h-full flex-col gap-3">
               <Eyebrow dark>Grand Converge · Yenagoa</Eyebrow>
               <h3 className="font-display text-3xl font-semibold">
                 Three Days That Shape Futures
               </h3>
-              <p className="text-4xl font-black tracking-tight text-[#d80f12]">
+              <p className="text-4xl font-black tracking-tight text-red-400">
                 Nov 11–14
               </p>
               <p className="text-sm leading-relaxed text-white/70">
@@ -131,6 +143,7 @@ export function ImpactSection() {
                   </li>
                 ))}
               </ul>
+              </div>
             </Card>
           }
           featureTags={
@@ -152,7 +165,19 @@ export function ImpactSection() {
             </Card>
           }
           secondaryFeature={
-            <Card>
+            <Card className="relative overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/inspire/gallery/2024/1.png"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-white/85"
+              />
+              <div className="relative z-10 flex h-full flex-col gap-3">
               <Eyebrow>Essay & Speech</Eyebrow>
               <h3 className="font-display text-2xl font-semibold text-neutral-900">
                 “My Niger Delta Dream”
@@ -162,6 +187,7 @@ export function ImpactSection() {
                 future they envision — winners represent their states at the
                 finale.
               </p>
+              </div>
             </Card>
           }
           statistic={

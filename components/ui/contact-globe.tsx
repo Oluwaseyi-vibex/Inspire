@@ -15,12 +15,15 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const GlobeWireframe = dynamic(
-  () => import("@/components/ui/globe-wireframe"),
+const NigerDeltaMap = dynamic(
+  () => import("@/components/ui/niger-delta-map"),
   {
     ssr: false,
     loading: () => (
-      <div className="aspect-square w-full" aria-hidden="true" />
+      <div
+        className="h-[420px] w-full animate-pulse rounded-2xl bg-neutral-100"
+        aria-hidden="true"
+      />
     ),
   }
 );
@@ -198,18 +201,13 @@ export default function ContactWithGlobe({
               })}
             </div>
 
-            <div className="w-full max-w-md">
-              <GlobeWireframe
-                className="aspect-square w-full"
-                autoRotate={!reduceMotion}
-                autoRotateSpeed={0.45}
-                strokeWidth={0.6}
-                graticuleOpacity={0.15}
-                strokeColor="rgba(23,23,23,0.55)"
-                graticuleColor="rgba(23,23,23,0.4)"
-                sphereOutlineColor="rgba(23,23,23,0.3)"
-              />
+            <div className="h-[420px] w-full overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+              <NigerDeltaMap />
             </div>
+            <p className="text-xs text-neutral-500">
+              The 9-state preliminaries tour — click a marker for details.
+              Bayelsa hosts the Grand Converge.
+            </p>
           </motion.div>
 
           <motion.div

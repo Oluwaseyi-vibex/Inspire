@@ -40,7 +40,7 @@ export const SlideTabs = () => {
       ))}
 
 
-      <Link href="#contact" onClick={(e) => handleHashClick(e, "#contact")} className="ml-4 cursor-pointer uppercase rounded-sm bg-[#d80f12] backdrop-blur-md px-4 py-1 text-xs text-white transition-all hover:bg-[#D80F12]/80 hover:text-white md:px-6 md:py-1.5 md:text-sm">
+      <Link href="#contact" onClick={(e) => handleHashClick(e, "#contact")} className="ml-4 cursor-pointer uppercase rounded-sm bg-[#af0000] backdrop-blur-md px-4 py-1 text-xs text-white transition-all hover:bg-[#D80F12]/80 hover:text-white md:px-6 md:py-1.5 md:text-sm">
         Support
       </Link>
 
