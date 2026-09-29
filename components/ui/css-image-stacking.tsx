@@ -1,98 +1,39 @@
 "use client";
 import { ReactLenis } from "lenis/react";
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { AnimatedMarqueeHero } from "@/components/ui/animated-marquee-hero";
 
 export default function CssImageStacking() {
-  const hero3Ref = useRef<HTMLDivElement>(null);
-  const hero6Ref = useRef<HTMLDivElement>(null);
-  const defaultOverlayRef = useRef<HTMLDivElement>(null);
-  const activeOverlayRef = useRef<HTMLDivElement>(null);
-  const hero6DefaultOverlayRef = useRef<HTMLDivElement>(null);
-  const hero6ActiveOverlayRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const hero3 = hero3Ref.current;
-    const hero6 = hero6Ref.current;
-    const defaultOverlay = defaultOverlayRef.current;
-    const activeOverlay = activeOverlayRef.current;
-    const hero6Default = hero6DefaultOverlayRef.current;
-    const hero6Active = hero6ActiveOverlayRef.current;
-    if (!hero3 || !hero6 || !defaultOverlay || !activeOverlay || !hero6Default || !hero6Active) return;
-
-    const observer3 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          defaultOverlay.style.opacity = "0";
-          activeOverlay.style.opacity = "1";
-          hero6Default.style.opacity = "0";
-          hero6Active.style.opacity = "0";
-        } else {
-          defaultOverlay.style.opacity = "1";
-          activeOverlay.style.opacity = "0";
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const observer6 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          defaultOverlay.style.opacity = "0";
-          activeOverlay.style.opacity = "0";
-          hero6Default.style.opacity = "0";
-          hero6Active.style.opacity = "1";
-        } else {
-          hero6Default.style.opacity = "1";
-          hero6Active.style.opacity = "0";
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer3.observe(hero3);
-    observer6.observe(hero6);
-    return () => { observer3.disconnect(); observer6.disconnect(); };
-  }, []);
 
   return (
     <ReactLenis root options={{ duration: 0.8 }}>
-      <main className="bg-background mt-4">
-        <div ref={defaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)" }} />
-        <div ref={activeOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #126165 40%, #BCC337)", opacity: 0 }} />
-        <div ref={hero6DefaultOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)", opacity: 0 }} />
-        <div ref={hero6ActiveOverlayRef} className="gradient-overlay" style={{ background: "linear-gradient(to right, #AF0101 30%, #FECB15)", opacity: 0 }} />
+      <main className="bg-background">
+        <div className="gradient-overlay" style={{ background: "linear-gradient(to right, #3e0f13 37%, #d80f12)" }} />
 
-        <section className="text-foreground w-full bg-background" data-nav-bg="dark">
-          <>
-            <div className="sm:sticky sm:top-2 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero1.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div>
-            <div className="sm:sticky sm:top-2 w-full">
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero2.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto " />
-              </figure>
-            </div>
-            <div className="sm:sticky sm:top-2 w-full" ref={hero3Ref}>
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero3.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div>
+        <AnimatedMarqueeHero
+          tagline="Inspire Nigeria Child Project"
+          title="Empowering Every Child to Shine"
+          description="Accessible, engaging, and impactful learning experiences for children in the Niger Delta."
+          ctaText="Support the Project"
+          images={[
+            "/inspire/gallery/2024/2.png",
+            "/inspire/gallery/2021/4.png",
+            "/inspire/gallery/2024/9.png",
+            "/inspire/gallery/2024/5.png",
+            "/inspire/5.png",
+            "/inspire/6.png",
+            "/inspire/7.png",
+            "/inspire/8.png",
+            "/inspire/9.png",
+            "/inspire/10.png",
+            "/inspire/11.png",
+            "/inspire/12.png",
+          ]}
+        />
 
-            <div className="sm:sticky sm:top-12 w-full" ref={hero6Ref}>
-              <figure className="w-full h-screen flex items-center justify-center">
-                <img src="/hero6.png" alt="" className="transition-all duration-300 w-full px-18 h-full object-contain mx-auto" />
-              </figure>
-            </div>
-
-          </>
-        </section>
-
-<section id="about" className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
-           <div className="max-w-5xl mx-auto">
-             <motion.h2
+        <section id="about" className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
+          <div className="max-w-5xl mx-auto">
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
@@ -150,9 +91,9 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-<section id="gallery" className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
-           <div className="max-w-6xl mx-auto">
-             <motion.h2
+        <section id="gallery" className="text-foreground w-full bg-background py-24 px-6 md:px-12" data-nav-bg="light">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}

@@ -23,11 +23,6 @@ const CONTACT_LINKS = [
     href: "mailto:contact@yoursaas.ai",
   },
   { icon: Phone, label: "+1 (800) 321 XX21", href: "tel:+18003214321" },
-  {
-    icon: Headphones,
-    label: "support@yoursaas.ai",
-    href: "mailto:support@yoursaas.ai",
-  },
 ];
 
 interface GlobeWireframeProps {
