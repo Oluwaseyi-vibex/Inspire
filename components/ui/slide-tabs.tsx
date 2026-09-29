@@ -73,7 +73,7 @@ export const SlideTabs = () => {
       <div className="w-full md:hidden">
         <div className="flex items-center justify-between rounded-2xl border-[0.1px] border-white/25 bg-black/40 py-0 pl-3 pr-2 backdrop-blur-md">
           <Link href="/" aria-label="Inspire home" className="flex items-center">
-            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-14 w-14 rounded-xl" />
+            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-14 w-18 rounded-xl" />
           </Link>
           <button
             type="button"
