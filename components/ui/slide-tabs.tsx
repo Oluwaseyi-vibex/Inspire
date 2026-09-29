@@ -50,11 +50,11 @@ export const SlideTabs = () => {
             opacity: 0,
           }));
         }}
-        className="relative mx-auto hidden w-fit normal-case items-center justify-center rounded-lg border-[0.1px] border-white/25 bg-black/30 backdrop-blur-md p-2 px-4 md:flex lg:p-3 lg:px-6"
+        className="relative mx-auto hidden w-fit normal-case items-center justify-center rounded-lg border-[0.1px] border-white/25 bg-black/30 backdrop-blur-md p-0 px-4 md:flex lg:p-0 lg:px-6"
       >
         <li className="relative z-10 block cursor-pointer mr-6 lg:mr-12">
           <Link href="/" aria-label="Inspire home">
-            <Image src="/logo.svg" alt="Inspire" width={80} height={80} className="h-12 w-12 rounded-xl lg:h-16 lg:w-16" />
+            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-16 w-16 rounded-xl lg:h-15 lg:w-20" />
           </Link>
         </li>
         {["Home", "About", "Gallery", "Contact"].map((item) => (
@@ -71,9 +71,9 @@ export const SlideTabs = () => {
 
       {/* Mobile bar + dropdown */}
       <div className="w-full md:hidden">
-        <div className="flex items-center justify-between rounded-2xl border-[0.1px] border-white/25 bg-black/40 py-2 pl-3 pr-2 backdrop-blur-md">
+        <div className="flex items-center justify-between rounded-2xl border-[0.1px] border-white/25 bg-black/40 py-0 pl-3 pr-2 backdrop-blur-md">
           <Link href="/" aria-label="Inspire home" className="flex items-center">
-            <Image src="/logo.svg" alt="Inspire" width={44} height={44} className="h-11 w-11 rounded-xl" />
+            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-14 w-14 rounded-xl" />
           </Link>
           <button
             type="button"
