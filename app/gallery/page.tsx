@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { handleHashClick } from "@/lib/scroll";
+import { ArrowUp } from "lucide-react";
+import { handleHashClick, scrollToSection } from "@/lib/scroll";
 
 interface GalleryYear {
   year: string;
@@ -100,6 +101,17 @@ function YearSection({ galleryYear }: { galleryYear: GalleryYear }) {
           </motion.figure>
         ))}
       </div>
+
+      <div className="mt-8 text-center">
+        <button
+          type="button"
+          onClick={() => scrollToSection("gallery-years")}
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition-colors hover:text-brand"
+        >
+          <ArrowUp aria-hidden="true" className="h-4 w-4" />
+          Back to all years
+        </button>
+      </div>
     </section>
   );
 }
@@ -127,21 +139,20 @@ export default function GalleryPage() {
       </div>
 
       <nav
+        id="gallery-years"
         aria-label="Gallery years"
-        className="sticky top-16 z-30 mt-10 border-y border-neutral-200 bg-white/85 backdrop-blur-md"
+        className="mx-auto mt-10 flex max-w-6xl scroll-mt-28 flex-wrap justify-center gap-2 px-6 md:px-12"
       >
-        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-2 px-6 py-3 md:px-12">
-          {GALLERY_YEARS.map(({ year }) => (
-            <a
-              key={year}
-              href={`#year-${year}`}
-              onClick={(e) => handleHashClick(e, `#year-${year}`)}
-              className="rounded-full border border-neutral-200 px-5 py-1.5 text-sm font-semibold text-neutral-700 transition-colors hover:border-brand hover:text-brand"
-            >
-              {year}
-            </a>
-          ))}
-        </div>
+        {GALLERY_YEARS.map(({ year }) => (
+          <a
+            key={year}
+            href={`#year-${year}`}
+            onClick={(e) => handleHashClick(e, `#year-${year}`)}
+            className="rounded-full border border-neutral-200 bg-white px-5 py-1.5 text-sm font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand hover:text-brand"
+          >
+            {year}
+          </a>
+        ))}
       </nav>
 
       <div className="pb-24">

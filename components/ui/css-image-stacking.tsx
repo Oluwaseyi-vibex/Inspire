@@ -1,19 +1,22 @@
 "use client";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { AnimatedMarqueeHero } from "@/components/ui/animated-marquee-hero";
 import { ContentWithIllustration } from "@/components/ui/content-with-illustration";
 import { ImpactSection } from "@/components/ui/impact-section";
-import { registerLenis, scrollToSection } from "@/lib/scroll";
+import { registerLenis, registerNavigator, scrollToSection } from "@/lib/scroll";
 
 /** Exposes the root Lenis instance for animated anchor scrolling + deep links. */
 let didHandleInitialHash = false;
 
 function LenisRegistrar() {
   const lenis = useLenis();
+  const router = useRouter();
   useEffect(() => {
     registerLenis(lenis ?? null);
+    registerNavigator((href) => router.push(href));
     // One-time deep-link handling: useLenis callbacks fire on every scroll,
     // so this must NOT live in one — it would yank the user back each scroll.
     if (lenis && !didHandleInitialHash) {
@@ -23,7 +26,7 @@ function LenisRegistrar() {
         setTimeout(() => scrollToSection(hash), 100);
       }
     }
-  }, [lenis]);
+  }, [lenis, router]);
   return null;
 }
 
@@ -36,7 +39,12 @@ export default function CssImageStacking() {
 
         <AnimatedMarqueeHero
           tagline="19th Inspired Niger Delta Schools Conference • Nov 11–14, 2026 • Yenagoa"
-          title="Values Re-orientation: Hope for a Better Nigeria"
+          title={
+            <>
+              <span className="block">Values Re-orientation:</span>
+              <span className="block">Hope for a Better Nigeria</span>
+            </>
+          }
           description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa."
           ctaText="Support the movement"
           images={[

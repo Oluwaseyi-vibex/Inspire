@@ -2,10 +2,16 @@ import type { MouseEvent } from "react";
 import type Lenis from "lenis";
 
 let lenisInstance: Lenis | null = null;
+let navigate: ((href: string) => void) | null = null;
 
 /** Called once from inside <ReactLenis> to expose the instance app-wide. */
 export function registerLenis(instance: Lenis | null | undefined) {
   lenisInstance = instance ?? null;
+}
+
+/** Registers Next.js SPA navigation (avoids full-page reloads). */
+export function registerNavigator(fn: (href: string) => void) {
+  navigate = fn;
 }
 
 /** Offset (px) so section tops clear the fixed navbar. */
@@ -67,6 +73,26 @@ export function scrollToTopAnimated() {
 }
 
 /**
+ * Go to a section by id. Animates if the section is on this page,
+ * otherwise navigates home first (deep-link registrar scrolls on load).
+ */
+export function goToSection(id: string) {
+  if (typeof window === "undefined") return;
+  const element = document.getElementById(id);
+  if (element) {
+    scrollToElement(element);
+    // Reflect the target in the URL without triggering a native jump.
+    window.history.replaceState(null, "", `#${id}`);
+  } else if (navigate) {
+    navigate(`/#${id}`);
+  } else {
+    // Fallback when the Next.js navigator isn't registered (e.g. SSR edge).
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.href = `/#${id}`;
+  }
+}
+
+/**
  * Attach to hash-link onClick to get animated scrolling while keeping the
  * href for semantics, right-click copy, and no-JS fallback.
  */
@@ -82,7 +108,7 @@ export function handleHashClick(e: MouseEvent, hash: string) {
     return;
   }
   const id = hash.replace(/^#/, "");
-  if (!id || !document.getElementById(id)) return;
+  if (!id) return;
   e.preventDefault();
-  scrollToSection(id);
+  goToSection(id);
 }
