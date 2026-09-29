@@ -4,6 +4,7 @@ import { ReactLenis, useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { AnimatedMarqueeHero } from "@/components/ui/animated-marquee-hero";
 import { ContentWithIllustration } from "@/components/ui/content-with-illustration";
+import { ImpactSection } from "@/components/ui/impact-section";
 import { registerLenis, scrollToSection } from "@/lib/scroll";
 
 /** Exposes the root Lenis instance for animated anchor scrolling + deep links. */
@@ -106,39 +107,7 @@ export default function CssImageStacking() {
           </div>
         </section>
 
-        <section id="gallery" className="w-full bg-neutral-50 py-24 px-6 md:px-12" data-nav-bg="light">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold font-display mb-12 text-center text-neutral-900"
-            >
-              Our Impact
-            </motion.h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { label: "Students, Teens & Parents", value: "45,000+" },
-                { label: "Schools Across the Region", value: "700+" },
-                { label: "Niger Delta States", value: "9" },
-                { label: "Anniversary Edition", value: "19th" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.8, delay: 0.2 * i }}
-                  className="text-center bg-white border border-neutral-200 rounded-xl p-6 shadow-sm"
-                >
-                  <p className="text-3xl md:text-4xl font-bold font-display text-[#d80f12]">{stat.value}</p>
-                  <p className="text-neutral-600 text-sm mt-2">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ImpactSection />
 
         {/* <footer className="group bg-background" data-nav-bg="light">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-linear-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
