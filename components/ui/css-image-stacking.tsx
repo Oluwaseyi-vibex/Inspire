@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { ReactLenis, useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { AnimatedMarqueeHero } from "@/components/ui/animated-marquee-hero";
@@ -6,14 +7,22 @@ import { ContentWithIllustration } from "@/components/ui/content-with-illustrati
 import { registerLenis, scrollToSection } from "@/lib/scroll";
 
 /** Exposes the root Lenis instance for animated anchor scrolling + deep links. */
+let didHandleInitialHash = false;
+
 function LenisRegistrar() {
-  useLenis((lenis) => {
-    registerLenis(lenis);
-    const hash = window.location.hash.replace(/^#/, "");
-    if (hash && document.getElementById(hash)) {
-      requestAnimationFrame(() => setTimeout(() => scrollToSection(hash), 50));
+  const lenis = useLenis();
+  useEffect(() => {
+    registerLenis(lenis ?? null);
+    // One-time deep-link handling: useLenis callbacks fire on every scroll,
+    // so this must NOT live in one — it would yank the user back each scroll.
+    if (lenis && !didHandleInitialHash) {
+      didHandleInitialHash = true;
+      const hash = window.location.hash.replace(/^#/, "");
+      if (hash && document.getElementById(hash)) {
+        setTimeout(() => scrollToSection(hash), 100);
+      }
     }
-  }, []);
+  }, [lenis]);
   return null;
 }
 
@@ -27,7 +36,7 @@ export default function CssImageStacking() {
         <AnimatedMarqueeHero
           tagline="19th Inspired Niger Delta Schools Conference • Nov 11–14, 2026 • Yenagoa"
           title="Values Re-orientation: Hope for a Better Nigeria"
-          description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa. Strictly by invitation."
+          description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa."
           ctaText="Support the movement"
           images={[
             "/inspire/gallery/2024/2.png",
@@ -91,7 +100,7 @@ export default function CssImageStacking() {
             >
               <h3 className="text-xl font-semibold font-display mb-3">The 19th Grand Converge — Yenagoa 2026</h3>
               <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                Preliminaries tour nine states from October 12th to 30th, 2026, featuring essay writing and speech presentations on issues that matter — from oil theft and spillage to tech skills and &ldquo;My Niger Delta Dream&rdquo;. Finalists converge November 11th–14th in Yenagoa for three inspiring days of exhibitions, panel discussions, concerts and awards. Access is strictly by invitation.
+                Preliminaries tour nine states from October 12th to 30th, 2026, featuring essay writing and speech presentations on issues that matter — from oil theft and spillage to tech skills and &ldquo;My Niger Delta Dream&rdquo;. Finalists converge November 11th–14th in Yenagoa for three inspiring days of exhibitions, panel discussions, concerts and awards. All are welcome to be part of it.
               </p>
             </motion.div>
           </div>

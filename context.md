@@ -13,9 +13,6 @@ students/teens and their parents/guardians respectively will participate in the 
 **SCHOOLS**
 only within the NIGER DELTA
 
-**Access**
-**STRICTLY BY INVITATION**
-
 **9 CITY TOUR**
 
 **GRAND**

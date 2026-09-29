@@ -248,7 +248,7 @@ export function CinematicFooter() {
               transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
               className="mb-12 text-center text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400 md:text-sm"
             >
-              November 11–14, 2026 · Strictly by invitation
+              November 11–14, 2026 · Yenagoa
             </motion.p>
 
             <motion.div

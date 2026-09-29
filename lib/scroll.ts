@@ -11,14 +11,7 @@ export function registerLenis(instance: Lenis | null | undefined) {
 /** Offset (px) so section tops clear the fixed navbar. */
 const NAV_OFFSET = -80;
 
-const easeInOutExpo = (t: number) =>
-  t === 0
-    ? 0
-    : t === 1
-      ? 1
-      : t < 0.5
-        ? Math.pow(2, 20 * t - 10) / 2
-        : (2 - Math.pow(2, -20 * t + 10)) / 2;
+const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
 function prefersReducedMotion() {
   return (
@@ -42,8 +35,8 @@ export function scrollToElement(element: HTMLElement) {
   if (lenisInstance) {
     lenisInstance.scrollTo(element, {
       offset: NAV_OFFSET,
-      duration: 1.6,
-      easing: easeInOutExpo,
+      duration: 1.0,
+      easing: easeOutExpo,
     });
   } else {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -67,7 +60,7 @@ export function scrollToTopAnimated() {
     return;
   }
   if (lenisInstance) {
-    lenisInstance.scrollTo(0, { duration: 1.6, easing: easeInOutExpo });
+    lenisInstance.scrollTo(0, { duration: 1.0, easing: easeOutExpo });
   } else {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
