@@ -22,6 +22,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-montserrat);
   --font-display: var(--font-playfair);
+  --animate-subtle-spin: subtle-spin 12s linear infinite;
+
+  @keyframes subtle-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
