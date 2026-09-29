@@ -1,5 +1,6 @@
 import CssImageStacking from "@/components/ui/css-image-stacking";
 import ContactWithGlobe from "@/components/ui/contact-globe";
+import { CinematicFooter } from "@/components/ui/cinematic-footer";
 
 export const metadata = {
   title: "Inspire Nigeria Child Project",
@@ -11,6 +12,7 @@ export default function Home() {
     <div>
       <CssImageStacking />
       <ContactWithGlobe id="contact" />
+      <CinematicFooter />
     </div>
   );
 }

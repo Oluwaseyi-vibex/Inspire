@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
+import { handleHashClick } from "@/lib/scroll";
 
 // Props interface for the component
 interface AnimatedMarqueeHeroProps {
@@ -18,6 +19,7 @@ interface AnimatedMarqueeHeroProps {
 const ActionButton = ({ children }: { children: React.ReactNode }) => (
   <motion.a
     href="#about"
+    onClick={(e) => handleHashClick(e, "#about")}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className="mt-8 inline-block px-8 py-3 rounded-full bg-[#d80f12] text-white font-semibold shadow-lg transition-colors hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"

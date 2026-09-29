@@ -1,20 +1,34 @@
 "use client";
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { AnimatedMarqueeHero } from "@/components/ui/animated-marquee-hero";
 import { ContentWithIllustration } from "@/components/ui/content-with-illustration";
+import { registerLenis, scrollToSection } from "@/lib/scroll";
+
+/** Exposes the root Lenis instance for animated anchor scrolling + deep links. */
+function LenisRegistrar() {
+  useLenis((lenis) => {
+    registerLenis(lenis);
+    const hash = window.location.hash.replace(/^#/, "");
+    if (hash && document.getElementById(hash)) {
+      requestAnimationFrame(() => setTimeout(() => scrollToSection(hash), 50));
+    }
+  }, []);
+  return null;
+}
 
 export default function CssImageStacking() {
 
   return (
     <ReactLenis root options={{ duration: 0.8 }}>
+      <LenisRegistrar />
       <main className="bg-white">
 
         <AnimatedMarqueeHero
           tagline="19th Inspired Niger Delta Schools Conference • Nov 11–14, 2026 • Yenagoa"
           title="Values Re-orientation: Hope for a Better Nigeria"
           description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa. Strictly by invitation."
-          ctaText="Join the 2026 Conference"
+          ctaText="Support the movement"
           images={[
             "/inspire/gallery/2024/2.png",
             "/inspire/gallery/2021/4.png",
