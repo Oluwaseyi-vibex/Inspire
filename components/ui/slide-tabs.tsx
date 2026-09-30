@@ -50,15 +50,15 @@ export const SlideTabs = () => {
             opacity: 0,
           }));
         }}
-        className="relative mx-auto hidden w-fit normal-case items-center justify-center rounded-lg border-[0.1px] border-white/25 bg-black/30 backdrop-blur-md p-0 px-4 md:flex lg:p-0 lg:px-6"
+        className="relative mx-auto hidden w-fit normal-case items-center justify-center rounded-lg border-[0.1px] border-white/25 bg-black/30 backdrop-blur-md p-2 px-4 md:flex lg:p-2 lg:px-6"
       >
         <li className="relative z-10 block cursor-pointer mr-6 lg:mr-12">
           <Link href="/" aria-label="Inspire home">
-            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-16 w-16 rounded-xl lg:h-15 lg:w-20" />
+            <Image src="/logo-white.png" alt="Inspire Nigeria Child" width={481} height={200} className="h-10 w-auto lg:h-10" priority />
           </Link>
         </li>
         {["Home", "About", "Gallery", "Contact"].map((item) => (
-          <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : item === "Gallery" ? "/gallery" : `#${item.toLowerCase()}`}>{item}</Tab>
+          <Tab key={item} setPosition={setPosition} href={item === "Home" ? "/" : item === "About" ? "/about" : item === "Gallery" ? "/gallery" : `#${item.toLowerCase()}`}>{item}</Tab>
         ))}
 
 
@@ -71,9 +71,9 @@ export const SlideTabs = () => {
 
       {/* Mobile bar + dropdown */}
       <div className="w-full md:hidden">
-        <div className="flex items-center justify-between rounded-2xl border-[0.1px] border-white/25 bg-black/40 py-0 pl-3 pr-2 backdrop-blur-md">
+        <div className="flex items-center justify-between rounded-2xl border-[0.1px] border-white/25 bg-black/40 py-2 pl-3 pr-2 backdrop-blur-md">
           <Link href="/" aria-label="Inspire home" className="flex items-center">
-            <Image src="/logo.svg" alt="Inspire" width={500} height={500} className="h-14 w-18 rounded-xl" />
+            <Image src="/logo-white.png" alt="Inspire Nigeria Child" width={481} height={200} className="h-9 w-auto" priority />
           </Link>
           <button
             type="button"
@@ -98,7 +98,7 @@ export const SlideTabs = () => {
             >
               {[
                 { label: "Home", href: "/" },
-                { label: "About", href: "#about" },
+                { label: "About", href: "/about" },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Contact", href: "#contact" },
               ].map((item) => (

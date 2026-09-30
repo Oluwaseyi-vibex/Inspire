@@ -74,7 +74,7 @@ export default function CssImageStacking() {
             ]}
             imageSrc="/about-illustration.jpg"
             imageAlt="Illustration of students learning together"
-            iconSrc="/logo.svg"
+            iconSrc="/logo-white.png"
             iconAlt="Inspire Nigeria Child logo"
           />
 

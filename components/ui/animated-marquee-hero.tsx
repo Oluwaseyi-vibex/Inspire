@@ -55,7 +55,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   return (
     <section
       className={cn(
-        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(135deg,#af0000_0%,#fecb15_100%)] flex flex-col items-center justify-center text-center px-4 pt-36 pb-64 md:pt-28 md:pb-72",
+        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(120deg,#af0000_0%,#c21114_35%,#fecb15_110%)] flex flex-col items-center justify-center text-center px-4 py-28",
         className
       )}
     >
@@ -145,7 +145,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         </motion.div>
       </div>
 
-      {/* Animated Image Marquee */}
+      {/* Animated Image Marquee (commented out)
       <div className="absolute bottom-0 left-0 w-full h-1/3 md:h-2/5 [mask-image:linear-gradient(to_bottom,transparent,black_30%)] overflow-hidden">
         <motion.div
           className="flex gap-4 w-max pr-4 items-end h-full"
@@ -177,6 +177,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           ))}
         </motion.div>
       </div>
+      */}
     </section>
   );
 };
