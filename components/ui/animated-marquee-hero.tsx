@@ -55,7 +55,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   return (
     <section
       className={cn(
-        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(135deg,#af0000_0%,#fecb15_100%)] flex flex-col items-center justify-center text-center px-4 pt-28 pb-64 md:pb-72",
+        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(135deg,#af0000_0%,#fecb15_100%)] flex flex-col items-center justify-center text-center px-4 pt-36 pb-64 md:pt-28 md:pb-72",
         className
       )}
     >
@@ -106,7 +106,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
               },
             },
           }}
-          className="text-5xl md:text-7xl font-bold tracking-tighter text-white"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white"
         >
           {typeof title === "string" ? (
             title.split(" ").map((word, i) => (
@@ -129,7 +129,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           animate="show"
           variants={FADE_IN_ANIMATION_VARIANTS}
           transition={{ delay: 0.5 }}
-          className="mt-6 max-w-xl text-lg text-white/85"
+          className="mt-6 max-w-xl text-base md:text-lg text-white/85"
         >
           {description}
         </motion.p>
