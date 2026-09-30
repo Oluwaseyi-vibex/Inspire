@@ -20,7 +20,7 @@ interface AnimatedMarqueeHeroProps {
 const ActionButton = ({ children }: { children: React.ReactNode }) => (
   <motion.a
     href="#about"
-    onClick={(e) => handleHashClick(e, "#about")}
+    onClick={(e) => handleHashClick(e, "#contact")}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className="mt-8 inline-block px-8 py-3 rounded-full bg-white text-brand font-semibold shadow-lg transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
