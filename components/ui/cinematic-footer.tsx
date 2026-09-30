@@ -294,7 +294,7 @@ export function CinematicFooter() {
                 {["Nov 11–14, 2026", "Yenagoa", "19th Edition"].map((fact) => (
                   <span
                     key={fact}
-                    className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-neutral-400 md:text-sm"
+                    className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-brand md:text-sm"
                   >
                     {fact}
                   </span>
