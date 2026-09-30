@@ -137,7 +137,23 @@ export default function ContactWithGlobe({
       id={id}
       className={cn("relative w-full overflow-hidden bg-white py-20", className)}
     >
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+      {/* Creative backdrop */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 right-[-10%] h-[480px] w-[480px] rounded-full bg-brand/[0.07] blur-[110px]" />
+        <div className="absolute bottom-[-20%] left-[-10%] h-[420px] w-[420px] rounded-full bg-[#fecb15]/[0.12] blur-[110px]" />
+        <div
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]"
+          style={{
+            backgroundSize: "56px 56px",
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
+          }}
+        />
+        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[20vw] font-black leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(0,0,0,0.07)]">
+          CONTACT
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-12 flex flex-col items-center gap-4 text-center">
           <motion.h2
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}

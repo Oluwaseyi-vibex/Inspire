@@ -39,6 +39,42 @@ const FADE_IN_ANIMATION_VARIANTS: Variants = {
   },
 };
 
+const MARQUEE_STYLES = `
+@keyframes hero-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes hero-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.hero-marquee-track {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.hero-marquee-paused:hover .hero-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track {
+    animation: none;
+  }
+}
+`;
+
+const MARQUEE_PHRASES = [
+  "Conquer Fear",
+  "Secured Future",
+  "Values Re-orientation",
+  "700+ Schools",
+  "9 States, One Stage",
+  "Yenagoa 2026",
+];
+
 // The main hero component
 export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   tagline,
@@ -53,9 +89,11 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   const reduceMotion = useReducedMotion();
 
   return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: MARQUEE_STYLES }} />
     <section
       className={cn(
-        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(120deg,#af0000_0%,#c21114_35%,#fecb15_110%)] flex flex-col items-center justify-center text-center px-4 py-28",
+        "relative w-full min-h-screen h-screen overflow-hidden bg-[linear-gradient(120deg,#af0000_0%,#c21114_35%,#fecb15_110%)] flex flex-col items-center justify-center text-center px-4 pt-28 pb-72 md:pb-80",
         className
       )}
     >
@@ -81,7 +119,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         loading="eager"
         fetchPriority="high"
         aria-hidden="true"
-        className="absolute top-0 right-0 z-[5] hidden h-[95vh] w-auto object-contain object-bottom [mask-image:linear-gradient(to_right,transparent,black_30%)] lg:block"
+        className="absolute top-0 right-0 z-[5] block h-[55vh] w-auto object-contain object-bottom opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:h-[70vh] sm:opacity-70 lg:h-[95vh] lg:opacity-100"
       />
       <div className="z-10 flex flex-col items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.28)]">
         {/* Tagline */}
@@ -145,24 +183,17 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         </motion.div>
       </div>
 
-      {/* Animated Image Marquee (commented out)
-      <div className="absolute bottom-0 left-0 w-full h-1/3 md:h-2/5 [mask-image:linear-gradient(to_bottom,transparent,black_30%)] overflow-hidden">
-        <motion.div
-          className="flex gap-4 w-max pr-4 items-end h-full"
-          animate={reduceMotion ? undefined : {
-            x: ["0%", "-50%"],
-          }}
-          transition={{
-            ease: "linear",
-            duration: 40,
-            repeat: Infinity,
-          }}
+      {/* Dual creative marquee: photos glide left, rally phrases drift right */}
+      <div className="hero-marquee-paused absolute bottom-0 left-0 w-full [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div
+          aria-hidden="true"
+          className="hero-marquee-track flex w-max items-end gap-4 pr-4"
+          style={{ animationName: "hero-marquee-left", animationDuration: "45s" }}
         >
           {duplicatedImages.map((src, index) => (
             <div
               key={index}
-              aria-hidden={index >= images.length}
-              className="relative aspect-[3/4] h-48 md:h-64 flex-shrink-0"
+              className="relative aspect-[3/4] h-36 md:h-48 flex-shrink-0"
               style={{
                 rotate: `${index % 2 === 0 ? -2 : 2}deg`,
               }}
@@ -170,15 +201,38 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
               <img
                 src={src}
                 alt=""
-                className="w-full h-full object-cover rounded-2xl shadow-xl"
-                loading={index < 4 ? "eager" : "lazy"}
+                className="w-full h-full object-cover rounded-2xl shadow-xl ring-1 ring-white/30"
+                loading="lazy"
               />
             </div>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="overflow-hidden py-3">
+          <div
+            aria-hidden="true"
+            className="hero-marquee-track flex w-max items-center"
+            style={{ animationName: "hero-marquee-right", animationDuration: "60s" }}
+          >
+            {[0, 1].map((half) => (
+              <div key={half} className="flex items-center">
+                {MARQUEE_PHRASES.map((phrase) => (
+                  <span key={phrase} className="flex items-center">
+                    <span className="whitespace-nowrap px-6 text-sm font-black uppercase tracking-[0.3em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.65)] md:text-base">
+                      {phrase}
+                    </span>
+                    <span aria-hidden="true" className="text-sm text-white/90 md:text-base">
+                      ✦
+                    </span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      */}
     </section>
+    </>
   );
 };
 
