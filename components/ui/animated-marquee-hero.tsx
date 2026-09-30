@@ -4,6 +4,7 @@ import React from "react";
 import { motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 import { handleHashClick } from "@/lib/scroll";
+import { GradientBarsBackground } from "@/components/ui/gradient-bars-background";
 
 // Props interface for the component
 interface AnimatedMarqueeHeroProps {
@@ -57,6 +58,17 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         className
       )}
     >
+      <GradientBarsBackground
+        bars={28}
+        direction="y"
+        gradientFrom="rgba(216, 15, 18, 0.10)"
+        gradientTo="rgba(254, 203, 21, 0.10)"
+        animation="wave"
+        duration={7}
+        intensity={28}
+        stagger={0.18}
+        className="absolute inset-0 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+      />
       <div className="z-10 flex flex-col items-center">
         {/* Tagline */}
         <motion.div
