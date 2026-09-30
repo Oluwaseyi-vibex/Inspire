@@ -46,7 +46,7 @@ export default function CssImageStacking() {
             </>
           }
           description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa."
-          ctaText="Support the movement"
+          ctaText="Join the Conference"
           images={[
             "/inspire/gallery/2024/1.png",
             "/inspire/gallery/2024/3.png",

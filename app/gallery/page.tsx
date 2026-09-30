@@ -2,13 +2,22 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+import {
+  ArrowUp,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
+  X,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 import { handleHashClick, scrollToSection } from "@/lib/scroll";
 
 interface GalleryCategory {
   id: string;
   heading: string;
   label: string;
+  watermark: string;
   images: string[];
 }
 
@@ -17,6 +26,7 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "year-2024",
     heading: "2024",
     label: "2024 Edition",
+    watermark: "’24",
     images: Array.from(
       { length: 16 },
       (_, i) => `/inspire/gallery/2024/${i + 1}.png`
@@ -26,6 +36,7 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "year-2021",
     heading: "2021",
     label: "2021 Edition",
+    watermark: "’21",
     images: Array.from(
       { length: 4 },
       (_, i) => `/inspire/gallery/2021/${i + 1}.png`
@@ -35,6 +46,7 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "year-2019",
     heading: "2019",
     label: "2019 Edition",
+    watermark: "’19",
     images: Array.from(
       { length: 3 },
       (_, i) => `/inspire/gallery/2019/${i + 1}.png`
@@ -44,6 +56,7 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "year-2018",
     heading: "2018",
     label: "2018 Edition",
+    watermark: "’18",
     images: Array.from(
       { length: 3 },
       (_, i) => `/inspire/gallery/2018/${i + 1}.png`
@@ -53,6 +66,7 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "year-2017",
     heading: "2017",
     label: "2017 Edition",
+    watermark: "’17",
     images: Array.from(
       { length: 3 },
       (_, i) => `/inspire/gallery/2017/${i + 1}.png`
@@ -62,12 +76,18 @@ const GALLERY_YEARS: GalleryCategory[] = [
     id: "extras",
     heading: "Extras",
     label: "Extras",
+    watermark: "+27",
     images: Array.from(
       { length: 27 },
       (_, i) => `/inspire/extras/${i + 1}.png`
     ),
   },
 ];
+
+const TOTAL_PHOTOS = GALLERY_YEARS.reduce(
+  (sum, category) => sum + category.images.length,
+  0
+);
 
 interface LightboxState {
   images: string[];
@@ -173,83 +193,120 @@ function Lightbox({
 
 function YearSection({
   galleryYear,
+  flip,
   onView,
 }: {
   galleryYear: GalleryCategory;
+  flip: boolean;
   onView: (images: string[], index: number) => void;
 }) {
   return (
     <section
       id={galleryYear.id}
-      className="mx-auto max-w-6xl scroll-mt-28 px-6 py-14 md:px-12"
+      className={cn(
+        "relative scroll-mt-28 overflow-hidden border-t border-neutral-200",
+        flip ? "bg-neutral-50" : "bg-white"
+      )}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8 flex flex-wrap items-end justify-between gap-3"
+      {/* Giant watermark numeral */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute -top-6 select-none text-[26vw] font-black leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(0,0,0,0.08)] md:text-[13rem]",
+          flip ? "right-0 md:right-12" : "left-0 md:left-12"
+        )}
       >
-        <div>
-          <p className="mb-1 text-xs font-bold uppercase tracking-[0.3em] text-brand">
-            {galleryYear.label}
-          </p>
-          <h2 className="font-display text-4xl font-bold text-neutral-900 md:text-5xl">
-            {galleryYear.heading}
-          </h2>
-        </div>
-        <p className="text-sm text-neutral-500">
-          {galleryYear.images.length}{" "}
-          {galleryYear.images.length === 1 ? "photo" : "photos"}
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {galleryYear.images.map((src, index) => (
-          <motion.figure
-            key={src}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: (index % 3) * 0.08 }}
-            className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm"
-          >
-            <button
-              type="button"
-              onClick={() => onView(galleryYear.images, index)}
-              aria-label={`View ${galleryYear.label} photo ${index + 1} fullscreen`}
-              className="block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={`${galleryYear.label} conference photo ${index + 1}`}
-                loading="lazy"
-                decoding="async"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/40"
-              >
-                <span className="flex h-12 w-12 scale-75 items-center justify-center rounded-full bg-white text-neutral-900 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
-                  <Expand className="h-5 w-5" />
-                </span>
-              </span>
-            </button>
-          </motion.figure>
-        ))}
+        {galleryYear.watermark}
       </div>
 
-      <div className="mt-8 text-center">
-        <button
-          type="button"
-          onClick={() => scrollToSection("gallery-years")}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition-colors hover:text-brand"
+      <div className="relative mx-auto max-w-6xl px-6 py-14 md:px-12 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 flex flex-wrap items-end justify-between gap-4"
         >
-          <ArrowUp aria-hidden="true" className="h-4 w-4" />
-          Back to all years
-        </button>
+          <div>
+            <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-brand">
+              <span
+                aria-hidden="true"
+                className="inline-block h-px w-8 bg-brand"
+              />
+              {galleryYear.label}
+            </p>
+            <h2 className="font-display text-5xl font-bold tracking-tight text-neutral-900 md:text-6xl">
+              {galleryYear.heading}
+            </h2>
+          </div>
+          <p className="rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-neutral-500">
+            {galleryYear.images.length}{" "}
+            {galleryYear.images.length === 1 ? "photo" : "photos"}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
+          {galleryYear.images.map((src, index) => {
+            const featured = index % 7 === 0;
+            return (
+              <motion.figure
+                key={src}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: (index % 4) * 0.07 }}
+                className={cn(
+                  "group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm",
+                  featured && "col-span-2 row-span-2"
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={() => onView(galleryYear.images, index)}
+                  aria-label={`View ${galleryYear.label} photo ${index + 1} fullscreen`}
+                  className="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={`${galleryYear.label} conference photo ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    className={cn(
+                      "w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]",
+                      featured ? "aspect-[16/10] h-full" : "aspect-[4/3]"
+                    )}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-start justify-between bg-gradient-to-t from-black/50 via-transparent to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  >
+                    <span className="rounded-full bg-black/50 px-2.5 py-1 font-mono text-[11px] font-semibold text-white backdrop-blur-sm">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900">
+                      <Expand className="h-4 w-4" />
+                    </span>
+                  </span>
+                </button>
+              </motion.figure>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => scrollToSection("gallery-years")}
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition-colors hover:text-brand"
+          >
+            <ArrowUp
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5"
+            />
+            Back to all years
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -271,47 +328,75 @@ export default function GalleryPage() {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-6xl px-6 pt-32 text-center md:px-12">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-display text-5xl font-bold text-neutral-900 md:text-6xl"
-        >
-          Our <span className="text-brand">Gallery</span>
-        </motion.h1>
+      {/* Header */}
+      <div className="mx-auto max-w-6xl px-6 pt-32 md:px-12 md:pt-40">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-4 text-base leading-relaxed text-neutral-600 md:text-lg"
+          transition={{ duration: 0.5 }}
+          className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-brand"
         >
-          Moments from our journey, year by year.
+          <span aria-hidden="true" className="inline-block h-px w-8 bg-brand" />
+          Selected Editions
         </motion.p>
-      </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="max-w-3xl font-display text-5xl font-bold leading-[1.02] tracking-tight text-neutral-900 md:text-7xl"
+        >
+          Moments, year by year.
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.12 }}
+          className="mt-6 flex flex-wrap gap-x-8 gap-y-3"
+        >
+          {[
+            [`${GALLERY_YEARS.length}`, "collections"],
+            [`${TOTAL_PHOTOS}`, "photos"],
+            ["2017—2024", "seasons"],
+          ].map(([value, label]) => (
+            <p key={label} className="flex items-baseline gap-2">
+              <span className="font-display text-3xl font-black text-neutral-900 md:text-4xl">
+                {value}
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500">
+                {label}
+              </span>
+            </p>
+          ))}
+        </motion.div>
 
-      <nav
-        id="gallery-years"
-        aria-label="Gallery years"
-        className="mx-auto mt-10 flex max-w-6xl scroll-mt-28 flex-wrap justify-center gap-2 px-6 md:px-12"
-      >
+        <nav
+          id="gallery-years"
+          aria-label="Gallery years"
+          className="mt-10 flex scroll-mt-28 flex-wrap gap-2"
+        >
           {GALLERY_YEARS.map(({ id, heading }) => (
             <a
               key={id}
               href={`#${id}`}
               onClick={(e) => handleHashClick(e, `#${id}`)}
-              className="rounded-full border border-neutral-200 bg-white px-5 py-1.5 text-sm font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand hover:text-brand"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-5 py-2 text-sm font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand hover:text-brand"
             >
               {heading}
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+              />
             </a>
           ))}
-      </nav>
+        </nav>
+      </div>
 
-      <div className="pb-24">
-        {GALLERY_YEARS.map((galleryYear) => (
+      <div className="mt-14 pb-24">
+        {GALLERY_YEARS.map((galleryYear, i) => (
           <YearSection
             key={galleryYear.id}
             galleryYear={galleryYear}
+            flip={i % 2 === 1}
             onView={openLightbox}
           />
         ))}
