@@ -119,7 +119,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           loading="eager"
           fetchPriority="high"
           aria-hidden="true"
-          className="absolute top-35 md:top-0 right-0 z-[5] block h-[55vh] w-auto object-contain object-bottom opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:h-[70vh] sm:opacity-70 lg:h-[95vh] lg:opacity-100"
+          className="absolute top-18 md:top-0 right-0 z-[5] block h-[66vh] w-auto object-contain object-bottom opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:h-[70vh] sm:opacity-70 lg:h-[95vh] lg:opacity-100"
         />
         <div className="z-10 flex flex-col items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.28)]">
           {/* Tagline */}
