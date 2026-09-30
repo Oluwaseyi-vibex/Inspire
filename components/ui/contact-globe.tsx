@@ -36,21 +36,47 @@ interface ContactLink {
   href?: string;
 }
 
-// TODO: replace with the organization's real contact details.
+// TODO: replace with the organization's real email address.
 const CONTACT_LINKS: ContactLink[] = [
+  {
+    icon: Phone,
+    label: "0903 782 8213",
+    href: "tel:+2349037828213",
+  },
+  {
+    icon: Phone,
+    label: "0707 447 4229",
+    href: "tel:+2347074474229",
+  },
   {
     icon: Mail,
     label: "info@inspirenigeriachild.org",
     href: "mailto:info@inspirenigeriachild.org",
   },
   {
-    icon: Phone,
-    label: "+234 (0) 800 000 0000",
-    href: "tel:+2348000000000",
-  },
-  {
     icon: MapPin,
     label: "Yenagoa, Bayelsa State, Nigeria",
+  },
+];
+
+const SOCIAL_LINKS = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/Inspire-Nigeria-Child-official/100079960248113/",
+    path: (
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    ),
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/inspirenigeriachild",
+    path: (
+      <>
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </>
+    ),
   },
 ];
 
@@ -199,6 +225,39 @@ export default function ContactWithGlobe({
                   </motion.span>
                 );
               })}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-neutral-500">
+                Follow us
+              </p>
+              {SOCIAL_LINKS.map(({ label, href, path }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Inspire Nigeria Child on ${label}`}
+                  initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease: smoothEase }}
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white transition-all duration-200 hover:border-brand hover:bg-brand"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5 text-neutral-700 transition-colors duration-200 group-hover:text-white"
+                  >
+                    {path}
+                  </svg>
+                </motion.a>
+              ))}
             </div>
 
             <div className="h-[420px] w-full overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">

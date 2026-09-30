@@ -48,18 +48,18 @@ export default function CssImageStacking() {
           description="Over 45,000 students, teens and parents from 700+ schools across the nine Niger Delta states. Preliminaries October 12–30 — Grand Converge in Yenagoa."
           ctaText="Support the movement"
           images={[
-            "/inspire/gallery/2024/2.png",
-            "/inspire/gallery/2021/4.png",
-            "/inspire/gallery/2024/9.png",
-            "/inspire/gallery/2024/5.png",
-            "/inspire/5.png",
-            "/inspire/6.png",
-            "/inspire/7.png",
-            "/inspire/8.png",
-            "/inspire/9.png",
-            "/inspire/10.png",
-            "/inspire/11.png",
-            "/inspire/12.png",
+            "/inspire/gallery/2024/1.png",
+            "/inspire/gallery/2024/3.png",
+            "/inspire/gallery/2024/6.png",
+            "/inspire/gallery/2024/7.png",
+            "/inspire/gallery/2024/8.png",
+            "/inspire/gallery/2024/10.png",
+            "/inspire/gallery/2021/1.png",
+            "/inspire/gallery/2021/2.png",
+            "/inspire/gallery/2021/3.png",
+            "/inspire/gallery/2019/1.png",
+            "/inspire/gallery/2018/1.png",
+            "/inspire/gallery/2017/1.png",
           ]}
         />
 

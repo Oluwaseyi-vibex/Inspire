@@ -305,8 +305,40 @@ export function CinematicFooter() {
 
           {/* 3. Bottom bar */}
           <div className="relative z-20 flex w-full flex-col items-center justify-between gap-6 px-6 pb-8 md:flex-row md:px-12">
-            <div className="order-2 text-[10px] font-semibold uppercase tracking-widest text-neutral-500 md:order-1 md:text-xs">
-              © 2026 Inspire Nigeria Child Project. All rights reserved.
+            <div className="order-2 flex items-center gap-4 md:order-1">
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-neutral-500 md:text-xs">
+                © 2026 Inspire Nigeria Child Project. All rights reserved.
+              </div>
+              <div className="flex items-center gap-2">
+                <Magnetic disabled={reduceMotion ?? false}>
+                  <a
+                    href="https://www.facebook.com/people/Inspire-Nigeria-Child-official/100079960248113/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Inspire Nigeria Child on Facebook"
+                    className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-neutral-400 hover:text-white"
+                  >
+                    <svg aria-hidden="true" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </a>
+                </Magnetic>
+                <Magnetic disabled={reduceMotion ?? false}>
+                  <a
+                    href="https://instagram.com/inspirenigeriachild"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Inspire Nigeria Child on Instagram"
+                    className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-neutral-400 hover:text-white"
+                  >
+                    <svg aria-hidden="true" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                  </a>
+                </Magnetic>
+              </div>
             </div>
 
             <div className="footer-glass-pill order-1 flex cursor-default items-center gap-2 rounded-full px-6 py-3 md:order-2">
