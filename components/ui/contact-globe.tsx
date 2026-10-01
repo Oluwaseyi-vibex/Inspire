@@ -388,7 +388,7 @@ export default function ContactWithGlobe({
                 Get in touch
               </h3>
               <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
-                Join us in supporting children across the Niger Delta.
+                Join us in supporting children across Nigeria.
               </p>
             </div>
 

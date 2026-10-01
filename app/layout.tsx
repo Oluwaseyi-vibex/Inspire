@@ -9,7 +9,7 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Inspire Nigeria Child Project",
-  description: "Empowering children in the Niger Delta through quality education and impactful learning experiences",
+  description: "Empowering children in the Nigeria through quality education and impactful learning experiences",
   icons: {
     icon: "/inspire-fav-icon.svg",
   },
