@@ -45,13 +45,8 @@ interface ContactLink {
 const CONTACT_LINKS: ContactLink[] = [
   {
     icon: Phone,
-    label: "0903 782 8213",
+    label: "+2349037828213, +2347074474229",
     href: "tel:+2349037828213",
-  },
-  {
-    icon: Phone,
-    label: "0707 447 4229",
-    href: "tel:+2347074474229",
   },
   {
     icon: Mail,
