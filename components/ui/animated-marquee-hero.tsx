@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 import { handleHashClick } from "@/lib/scroll";
@@ -110,17 +111,22 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         className="absolute inset-0"
       />
       */}
-        <motion.img
+      <motion.div
+        aria-hidden="true"
+        initial={reduceMotion ? false : { opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }}
+        className="absolute top-0 right-0 z-[5] block aspect-[755/1686] h-[55vh] object-bottom opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:h-[70vh] sm:opacity-70 lg:h-[95vh] lg:opacity-100"
+      >
+        <Image
           src="/hero/Asset 4@2x.png"
           alt=""
-          initial={reduceMotion ? false : { opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }}
-          loading="eager"
-          fetchPriority="high"
-          aria-hidden="true"
-          className="absolute top-18 md:top-0 right-0 z-[5] block h-[66vh] w-auto object-contain object-bottom opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:h-[70vh] sm:opacity-70 lg:h-[95vh] lg:opacity-100"
+          fill
+          priority
+          sizes="(max-width: 1024px) 45vw, 30vw"
+          className="object-contain object-bottom"
         />
+      </motion.div>
         <div className="z-10 flex flex-col items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.28)]">
           {/* Tagline */}
           <motion.div

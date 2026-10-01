@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowUp,
@@ -264,18 +265,18 @@ function YearSection({
                   type="button"
                   onClick={() => onView(galleryYear.images, index)}
                   aria-label={`View ${galleryYear.label} photo ${index + 1} fullscreen`}
-                  className="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  className={cn(
+                    "relative block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
+                    featured ? "aspect-[16/10] h-full" : "aspect-[4/3]"
+                  )}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={src}
                     alt={`${galleryYear.label} conference photo ${index + 1}`}
+                    fill
                     loading="lazy"
-                    decoding="async"
-                    className={cn(
-                      "w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]",
-                      featured ? "aspect-[16/10] h-full" : "aspect-[4/3]"
-                    )}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                   <span
                     aria-hidden="true"
@@ -327,7 +328,7 @@ export default function GalleryPage() {
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
   return (
-    <div className="bg-white">
+    <main className="bg-white">
       {/* Header */}
       <div className="mx-auto max-w-6xl px-6 pt-32 md:px-12 md:pt-40">
         <motion.p
@@ -411,6 +412,6 @@ export default function GalleryPage() {
           />
         )}
       </AnimatePresence>
-    </div>
+    </main>
   );
 }

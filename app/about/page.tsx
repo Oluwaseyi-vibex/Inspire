@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -30,7 +31,7 @@ const CHAPTERS = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-white">
+    <main className="bg-white">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div
@@ -97,12 +98,13 @@ export default function AboutPage() {
             className="relative mx-auto w-full max-w-md"
           >
             <div className="overflow-hidden rounded-[2.5rem] border border-brand/15 bg-gradient-to-b from-brand/10 via-brand/[0.04] to-transparent">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/hero/Asset 5@2x.png"
                 alt="Amb. Richard Franklin, founder of the InspireNigeriaChild Initiative"
+                width={1129}
+                height={1043}
+                priority
                 className="h-auto w-full object-cover"
-                loading="eager"
               />
             </div>
             <div className="absolute -bottom-5 left-1/2 w-max -translate-x-1/2 rounded-full border border-neutral-200 bg-white px-6 py-2.5 text-center shadow-lg">
@@ -214,6 +216,6 @@ export default function AboutPage() {
           </Link>
         </motion.div>
       </section>
-    </div>
+    </main>
   );
 }
