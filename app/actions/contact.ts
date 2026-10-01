@@ -93,6 +93,11 @@ export async function submitEnquiry(
       error: "Messaging is temporarily unavailable. Please call us instead.",
     };
   }
+  // Temporary diagnostic: length + prefix only, never the secret itself.
+  // Compare with the key shown in the Senviok dashboard.
+  console.log(
+    `submitEnquiry: using Senviok key prefix=${apiKey.slice(0, 9)} length=${apiKey.length}`
+  );
 
   const { name, email, phone, message } = parsed.data;
   const textBody = [
