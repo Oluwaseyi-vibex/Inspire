@@ -10,6 +10,9 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "Inspire Nigeria Child Project",
   description: "Empowering children in the Niger Delta through quality education and impactful learning experiences",
+  icons: {
+    icon: "/inspire-fav-icon.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
