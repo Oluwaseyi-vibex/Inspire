@@ -1,19 +1,25 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useActionState, useState } from "react";
+import { useFormStatus } from "react-dom";
 import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   CheckCircle2,
+  Loader2,
   Mail,
   MapPin,
   Phone,
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  submitEnquiry,
+  type EnquiryState,
+} from "@/app/actions/contact";
 
 const NigerDeltaMap = dynamic(
   () => import("@/components/ui/niger-delta-map"),
@@ -36,7 +42,6 @@ interface ContactLink {
   href?: string;
 }
 
-// TODO: replace with the organization's real email address.
 const CONTACT_LINKS: ContactLink[] = [
   {
     icon: Phone,
@@ -50,8 +55,8 @@ const CONTACT_LINKS: ContactLink[] = [
   },
   {
     icon: Mail,
-    label: "info@inspirenigeriachild.org",
-    href: "mailto:info@inspirenigeriachild.org",
+    label: "info@inspirenigerianchild.org",
+    href: "mailto:info@inspirenigerianchild.org",
   },
   {
     icon: MapPin,
@@ -111,6 +116,205 @@ const inputClassName =
 const labelClassName =
   "text-xs font-semibold uppercase tracking-widest text-brand";
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button
+      type="submit"
+      disabled={pending}
+      className="group h-11 w-fit rounded-xl bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-deep disabled:opacity-70"
+    >
+      {pending ? (
+        <>
+          Sending{" "}
+          <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" />
+        </>
+      ) : (
+        <>
+          Submit{" "}
+          <ArrowRight
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+          />
+        </>
+      )}
+    </Button>
+  );
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="text-xs font-medium text-brand">{message}</p>;
+}
+
+function EnquiryFormCard({
+  initial,
+  onResetKey,
+}: {
+  initial: false | { opacity: number; y: number };
+  onResetKey: () => void;
+}) {
+  const [state, formAction] = useActionState<EnquiryState, FormData>(
+    submitEnquiry,
+    { ok: false }
+  );
+  const fieldErrors = state.fieldErrors ?? {};
+
+  return (
+    <motion.div
+      initial={initial}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2, ease: smoothEase }}
+      className="flex flex-col gap-5 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8"
+    >
+      {state.ok ? (
+        <div
+          role="status"
+          className="flex min-h-96 flex-col items-center justify-center gap-3 text-center"
+        >
+          <CheckCircle2
+            aria-hidden="true"
+            className="h-12 w-12 text-brand"
+          />
+          <h3 className="font-display text-xl font-semibold text-neutral-900">
+            Message received
+          </h3>
+          <p className="max-w-xs text-sm leading-relaxed text-neutral-600">
+            Thank you for reaching out. Our team will get back to you
+            shortly.
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onResetKey}
+            className="mt-2"
+          >
+            Send another message
+          </Button>
+        </div>
+      ) : (
+        <form action={formAction} className="flex flex-col gap-5">
+          <div>
+            <h3 className="mb-0.5 text-lg font-semibold text-brand">
+              Send a message
+            </h3>
+            <p className="text-sm text-neutral-600">
+              Fill out the form and we&apos;ll get back to you.
+            </p>
+          </div>
+
+          <FormDots />
+
+          {state.error && (
+            <p
+              role="alert"
+              className="rounded-xl border border-brand/30 bg-brand/5 px-4 py-3 text-sm font-medium text-brand"
+            >
+              {state.error}
+            </p>
+          )}
+
+          {/* Honeypot — invisible to humans, catches bots. */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+          >
+            <label>
+              Website
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </label>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-name" className={labelClassName}>
+                Full Name
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                required
+                placeholder="Your Name"
+                className={inputClassName}
+              />
+              <FieldError message={fieldErrors.name} />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-phone" className={labelClassName}>
+                Phone <span className="font-normal">(optional)</span>
+              </label>
+              <input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="+234 ..."
+                className={inputClassName}
+              />
+              <FieldError message={fieldErrors.phone} />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="contact-email" className={labelClassName}>
+              Email Address
+            </label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="you@example.com"
+              className={inputClassName}
+            />
+            <FieldError message={fieldErrors.email} />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="contact-message" className={labelClassName}>
+              Message
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              placeholder="Type your message here"
+              rows={4}
+              className={`${inputClassName} resize-none py-3`}
+            />
+            <FieldError message={fieldErrors.message} />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-neutral-600">
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                className="mt-0.5 h-4 w-4 shrink-0 accent-brand"
+              />
+              I consent to Inspire Nigeria Child storing my details to
+              respond to this enquiry.
+            </label>
+            <FieldError message={fieldErrors.consent} />
+          </div>
+
+          <SubmitButton />
+        </form>
+      )}
+    </motion.div>
+  );
+}
+
 interface ContactWithGlobeProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   description?: string;
@@ -124,13 +328,8 @@ export default function ContactWithGlobe({
   id,
 }: ContactWithGlobeProps) {
   const reduceMotion = useReducedMotion();
-  const [submitted, setSubmitted] = useState(false);
+  const [formKey, setFormKey] = useState(0);
   const initial = reduceMotion ? false : { opacity: 0, y: 28 };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
 
   return (
     <section
@@ -285,123 +484,9 @@ export default function ContactWithGlobe({
             </p>
           </motion.div>
 
-          <motion.div
-            initial={initial}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: smoothEase }}
-            className="flex flex-col gap-5 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8"
-          >
-            {submitted ? (
-              <div
-                role="status"
-                className="flex min-h-96 flex-col items-center justify-center gap-3 text-center"
-              >
-                <CheckCircle2
-                  aria-hidden="true"
-                  className="h-12 w-12 text-brand"
-                />
-                <h3 className="font-display text-xl font-semibold text-neutral-900">
-                  Message received
-                </h3>
-                <p className="max-w-xs text-sm leading-relaxed text-neutral-600">
-                  Thank you for reaching out. Our team will get back to you
-                  shortly.
-                </p>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-2"
-                >
-                  Send another message
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <div>
-                  <h3 className="mb-0.5 text-lg font-semibold text-brand">
-                    Send a message
-                  </h3>
-                  <p className="text-sm text-neutral-600">
-                    Fill out the form and we&apos;ll get back to you.
-                  </p>
-                </div>
+          <EnquiryFormCard key={formKey} initial={initial} onResetKey={() => setFormKey((k) => k + 1)} />
 
-                <FormDots />
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="contact-name" className={labelClassName}>
-                      Full Name
-                    </label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      required
-                      placeholder="Your Name"
-                      className={inputClassName}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="contact-phone" className={labelClassName}>
-                      Phone <span className="font-normal">(optional)</span>
-                    </label>
-                    <input
-                      id="contact-phone"
-                      name="phone"
-                      type="tel"
-                      autoComplete="tel"
-                      placeholder="+234 ..."
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-email" className={labelClassName}>
-                    Email Address
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    placeholder="you@example.com"
-                    className={inputClassName}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-message" className={labelClassName}>
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    placeholder="Type your message here"
-                    rows={4}
-                    className={`${inputClassName} resize-none py-3`}
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="group h-11 w-fit rounded-xl bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-deep"
-                >
-                  Submit{" "}
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                  />
-                </Button>
-              </form>
-            )}
-          </motion.div>
         </div>
       </div>
     </section>
